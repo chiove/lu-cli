@@ -6,7 +6,7 @@ const nodeExternals = require('webpack-node-externals');
 const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = merge(baseConfig, {
-    devtool: devMode ? "source-map" : "hidden-source-map",
+    devtool: devMode ? "source-map" : false,
     mode:process.env.NODE_ENV,
     entry: {
         app:['babel-polyfill',path.resolve(__dirname, "../src/index.js")],
