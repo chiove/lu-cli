@@ -282,41 +282,31 @@ var A = function A(props) {
 
 A.getInitData = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(ctx, next) {
-    var a, res;
+    var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            a = {
-              code: 0,
-              data: [{
-                name: '陆朝维',
-                age: '27'
-              }, {
-                name: '张三',
-                age: '24'
-              }, {
-                name: '李四',
-                age: '25'
-              }]
-            };
-
             if (true) {
-              _context.next = 8;
+              _context.next = 7;
               break;
             }
 
-            _context.next = 4;
+            _context.next = 3;
             return axios__WEBPACK_IMPORTED_MODULE_1___default()('/api/getList');
 
-          case 4:
+          case 3:
             res = _context.sent;
             return _context.abrupt("return", res.data);
 
-          case 8:
-            return _context.abrupt("return", a);
+          case 7:
+            _context.next = 9;
+            return ctx.api.list.index(ctx);
 
           case 9:
+            return _context.abrupt("return", _context.sent);
+
+          case 10:
           case "end":
             return _context.stop();
         }

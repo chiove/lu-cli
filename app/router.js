@@ -14,7 +14,7 @@ router.get('/*', async (ctx,next) => {
     ctx.type = 'text/html';
     delete require.cache[require.resolve('../build/server/app')];
     serverRender = require('../build/server/app').default;
-    ctx.initData = {}
+    ctx.api = controllers;
     const server = await serverRender(ctx);
     const client = await clientRender(ctx);
     ctx.body = renderToNodeStream(ssr ? server : client);

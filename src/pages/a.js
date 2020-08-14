@@ -7,29 +7,12 @@ return <div className={'test'}>{
         props.initData && props.initData.data.map((item, index)=><div key={index}>{item.name}</div>)
     }</div>;
 }
-A.getInitData = async (ctx) => {
-    const a = {
-        code:0,
-        data:[
-            {
-                name:'陆朝维',
-                age:'27'
-            },
-            {
-                name:'张三',
-                age:'24'
-            },
-            {
-                name:'李四',
-                age:'25'
-            },
-        ]
-    }
+A.getInitData = async (ctx, next) => {
     if(__CLIENT__){
         const res = await axios('/api/getList');
         return res.data;
     }else{
-        return a;
+        return await ctx.api.list.index(ctx);
     }
 }
 export default A;

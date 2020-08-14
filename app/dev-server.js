@@ -14,7 +14,6 @@ let router = require('./router');
 const start = async () => {
 
     app.context.compiler = compiler;
-
     //HMR
     app.use(kwm(compiler));
 
