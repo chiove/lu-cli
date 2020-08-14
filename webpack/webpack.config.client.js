@@ -26,7 +26,7 @@ if(devMode) entry.splice(1,0,'webpack-hot-middleware/client.js?reload=true&noInf
 
 module.exports = merge(baseConfig,{
     mode: "development",
-    devtool: devMode ? "source-map" : false,
+    devtool: devMode ? "cheap-module-source-map" : "source-map",
     entry: entry,
     output: {
         path: path.resolve(__dirname, "../build"),
