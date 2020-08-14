@@ -1,8 +1,5 @@
 {
   "chunk.js": "/static/js/chunk.chunk.js",
-  "chunk.js.map": "/static/js/chunk.chunk.js.map",
   "main.css": "/static/css/main.css",
-  "main.js": "/static/js/main.js",
-  "main.css.map": "/static/css/main.css.map",
-  "main.js.map": "/static/js/main.js.map"
+  "main.js": "/static/js/main.js"
 }
