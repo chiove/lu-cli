@@ -1,0 +1,37 @@
+{
+  "extends": ["eslint-config-ali/react"],
+  "parser": "babel-eslint",
+  "rules": {
+    "new-cap": "off",
+    "require-yield": "off",
+    "import/no-dynamic-require": "off",
+    "strict": "off",
+    "class-methods-use-this": "off",
+    "no-console": "off",
+    "react/no-danger": "off",
+    "object-curly-spacing": ["error", "never"],
+    "react/prop-types": "on",
+    "no-param-reassign": "off",
+    "react/forbid-prop-types": ["warn", {"forbid": ["any"]}],
+    "react/sort-comp": "off",
+    "react/require-default-props": "off",
+    "react/jsx-no-bind": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/prefer-stateless-function": 0,
+    "no-template-curly-in-string": 0,
+    "import/prefer-default-export": 0,
+    "max-len": [1, 233],
+    "react/jsx-tag-spacing": 0,
+    "no-plusplus": 0,
+    "no-script-url": 0,
+    "spaced-comment": 2,
+    "no-nested-ternary": 0,
+    "react/no-array-index-key": 0,
+    "quotes": [1]
+  },
+  "globals": {
+    "__CLIENT__": true,
+    "__SERVER__": true
+  }
+}
