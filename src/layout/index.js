@@ -5,7 +5,7 @@ const Layout = (props) => {
   if (__CLIENT__) {
     return  props.children ? props.children : ''
   } else {
-    // const { initData } = props;
+    const { initData } = props;
     return (
       <html lang='en'>
         <head>
@@ -19,11 +19,11 @@ const Layout = (props) => {
           <div id='app'>{ props.children ? props.children : '' }</div>
           <script src="/static/js/main.js"></script>
           <script src="/static/js/chunk.chunk.js"></script>
-          {/* {
+          {
             initData && <script dangerouslySetInnerHTML={{
               __html: `window.__SERVER__=true; window.__INIT_DATA__ =${serialize(initData)}`
             }} />
-          } */}
+          }
 
         </body>
       </html>

@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom';
 import './style.less';
 const A = (props) => {
 return <div className={'test'}>{
-        props.initData && props.initData.data.map((item, index)=><div key={index}>{item.name}</div>)
+        props.initData && props.initData.data.map((item, index)=><div  key={index}><Link to={'/b'}>{item.name}</Link></div>)
     }</div>;
 }
-A.getInitData = async (ctx, next) => {
+A.getInitData = async (ctx) => {
     if(__CLIENT__){
         const res = await axios('/api/getList');
         return res.data;

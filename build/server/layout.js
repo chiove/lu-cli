@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Layout = function Layout(props) {
   if (false) {} else {
-    // const { initData } = props;
+    var initData = props.initData;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("html", {
       lang: "en"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
@@ -125,6 +125,10 @@ var Layout = function Layout(props) {
       src: "/static/js/main.js"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       src: "/static/js/chunk.chunk.js"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+      dangerouslySetInnerHTML: {
+        __html: "window.__USE_SERVER__=true; window.__INIT_DATA__ =".concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default()(initData))
+      }
     })));
   }
 };
