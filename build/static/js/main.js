@@ -410,14 +410,13 @@ var getComponent = function getComponent(url) {
 /***/ }),
 
 /***/ 0:
-/*!****************************************************************************************************!*\
-  !*** multi babel-polyfill webpack-hot-middleware/client.js?reload=true&noInfo=true ./src/index.js ***!
-  \****************************************************************************************************/
+/*!*******************************************!*\
+  !*** multi babel-polyfill ./src/index.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! babel-polyfill */"./node_modules/babel-polyfill/lib/index.js");
-__webpack_require__(/*! webpack-hot-middleware/client.js?reload=true&noInfo=true */"./node_modules/webpack-hot-middleware/client.js?reload=true&noInfo=true");
 module.exports = __webpack_require__(/*! /Users/haku/doc/webapp/lu-cli/src/index.js */"./src/index.js");
 
 

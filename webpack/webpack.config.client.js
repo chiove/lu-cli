@@ -19,16 +19,15 @@ const plugins = [
     new webpack.NoEmitOnErrorsPlugin()
 ];
 
-if(devMode){
-    plugins.push(
-        new webpack.HotModuleReplacementPlugin(),
+if(devMode) plugins.push(new webpack.HotModuleReplacementPlugin());
 
-    );
-}
+const entry = ['babel-polyfill' , path.resolve(__dirname, "../src/index.js")];
+if(devMode) entry.splice(1,0,'webpack-hot-middleware/client.js?reload=true&noInfo=true');
+
 module.exports = merge(baseConfig,{
     mode: "development",
     devtool: devMode ? "source-map" : "hidden-source-map",
-    entry: ['babel-polyfill','webpack-hot-middleware/client.js?reload=true&noInfo=true',path.resolve(__dirname, "../src/index.js")],
+    entry: entry,
     output: {
         path: path.resolve(__dirname, "../build"),
         filename: 'static/js/[name].js',
