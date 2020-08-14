@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack:///style.less"],"names":[],"mappings":"AAAA;EACE,eAAe;AACjB","file":"static/css/app.css","sourcesContent":[".test {\n  font-size: 40px;\n}\n"],"sourceRoot":""}
+{"version":3,"file":"static/css/app.css","sources":["webpack:///./src/pages/style.less","webpack:///style.less"],"sourcesContent":[".test{\n    font-size: 40px;\n}",".test {\n  font-size: 40px;\n}\n"],"mappings":"AAAA;AACA;ACCA;;","sourceRoot":""}

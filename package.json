@@ -16,16 +16,17 @@
   "dependencies": {
     "koa": "^2.9.0",
     "koa-better-router": "^2.1.1",
-    "koa-router": "^9.1.0",
     "koa-static": "^5.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "require-all": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "autoprefixer": "^9.8.6",
+    "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
     "chokidar": "^3.4.2",
@@ -40,6 +41,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "react-router-dom": "^5.2.0",
+    "serialize-javascript": "^4.0.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

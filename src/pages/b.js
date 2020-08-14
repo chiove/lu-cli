@@ -1,2 +1,6 @@
 import React from 'react';
-export default () => <>我是b页2面1</>
+const b = () => <>我是b页2面1</>;
+b.getInitData = async ()=>{
+    return {a:'你大爷'}
+}
+export default b;
