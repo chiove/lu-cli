@@ -118,14 +118,14 @@ var Layout = function Layout(props) {
       content: "#000000"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
       rel: "stylesheet",
-      href: "/static/css/main.css"
+      href: "/static/css/a.css"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "React App")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "app"
     }, props.children ? props.children : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       src: "/static/js/main.js"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       src: "/static/js/chunk.chunk.js"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    }), initData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       dangerouslySetInnerHTML: {
         __html: "window.__USE_SERVER__=true; window.__INIT_DATA__ =".concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default()(initData))
       }

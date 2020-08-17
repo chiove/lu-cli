@@ -1,3 +1,4 @@
+
 const Router = require('koa-better-router');
 const router = Router().loadMethods();
 const path = require('path');
@@ -6,7 +7,6 @@ const controllers = require('require-all')(`${__dirname}/controllers`);
 const clientRender = require('../build/server/layout').default;
 const {renderToNodeStream} = require('react-dom/server');
 let serverRender = require('../build/server/app').default;
-
 
 router.get('/api/getList', controllers.list.index);
 

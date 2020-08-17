@@ -103,13 +103,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var src_layout_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/layout/index */ "./src/layout/index.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router */ "./src/router.js");
-/* harmony import */ var _utils_getComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/getComponent */ "./src/utils/getComponent.js");
-/* harmony import */ var _utils_getInitData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/getInitData */ "./src/utils/getInitData.js");
+/* harmony import */ var _utils_getComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/getComponent */ "./src/utils/getComponent.js");
+/* harmony import */ var _utils_getInitData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/getInitData */ "./src/utils/getInitData.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 
@@ -126,15 +124,16 @@ var serverRender = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return Object(_utils_getInitData__WEBPACK_IMPORTED_MODULE_6__["default"])(ctx);
+            return Object(_utils_getInitData__WEBPACK_IMPORTED_MODULE_5__["default"])(ctx);
 
           case 2:
             initData = _context.sent;
+            console.log(initData);
             return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["StaticRouter"], {
               location: ctx.url
-            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(src_layout_index__WEBPACK_IMPORTED_MODULE_3__["default"], null, Object(_utils_getComponent__WEBPACK_IMPORTED_MODULE_5__["getComponent"])(ctx, initData))));
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(src_layout_index__WEBPACK_IMPORTED_MODULE_3__["default"], null, Object(_utils_getComponent__WEBPACK_IMPORTED_MODULE_4__["getComponent"])(ctx, initData))));
 
-          case 4:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -149,29 +148,25 @@ var serverRender = /*#__PURE__*/function () {
 
 var clientRender = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var initData;
+    var components;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return Object(_utils_getInitData__WEBPACK_IMPORTED_MODULE_6__["default"])(window.location.pathname);
+            return Object(_utils_getComponent__WEBPACK_IMPORTED_MODULE_4__["getWrapComponent"])();
 
           case 2:
-            initData = _context2.sent;
-            react_dom__WEBPACK_IMPORTED_MODULE_1___default.a[window.__USE_SERVER__ ? 'hydrate' : 'render']( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, _router__WEBPACK_IMPORTED_MODULE_4__["default"].map(function (_ref3, key) {
-              var path = _ref3.path,
-                  exact = _ref3.exact,
-                  Component = _ref3.component;
-              console.log(Object(_utils_getComponent__WEBPACK_IMPORTED_MODULE_5__["getWrapComponent"])(Component));
+            components = _context2.sent;
+            react_dom__WEBPACK_IMPORTED_MODULE_1___default.a[window.__USE_SERVER__ ? 'hydrate' : 'render']( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, components.map(function (Component, index) {
+              var path = Component.props.path;
               return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-                exact: exact,
-                key: key,
+                key: index,
                 path: path,
                 render: function render() {
                   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(src_layout_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                    key: key
-                  }, Object(_utils_getComponent__WEBPACK_IMPORTED_MODULE_5__["getWrapComponent"])(Component));
+                    key: index
+                  }, Component);
                 }
               });
             }))), document.getElementById('app'));
@@ -226,14 +221,14 @@ var Layout = function Layout(props) {
       content: "#000000"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
       rel: "stylesheet",
-      href: "/static/css/main.css"
+      href: "/static/css/a.css"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "React App")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "app"
     }, props.children ? props.children : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       src: "/static/js/main.js"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       src: "/static/js/chunk.chunk.js"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    }), initData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
       dangerouslySetInnerHTML: {
         __html: "window.__USE_SERVER__=true; window.__INIT_DATA__ =".concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default()(initData))
       }
@@ -417,14 +412,20 @@ var routes = [{
   path: '/a',
   exact: true,
   ssr: true,
-  component: __webpack_require__(/*! ./pages/a */ "./src/pages/a.js")["default"]
+  component: function component() {
+    return  true ? __webpack_require__(/*! ./pages/a */ "./src/pages/a.js")["default"] : undefined;
+  }
 }, {
   path: '/b',
   ssr: true,
-  component: __webpack_require__(/*! ./pages/b */ "./src/pages/b.js")["default"]
+  component: function component() {
+    return  true ? __webpack_require__(/*! ./pages/b */ "./src/pages/b.js")["default"] : undefined;
+  }
 }, {
   path: '/c',
-  component: __webpack_require__(/*! ./pages/c */ "./src/pages/c.js")["default"]
+  component: function component() {
+    return  true ? __webpack_require__(/*! ./pages/c */ "./src/pages/c.js")["default"] : undefined;
+  }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -445,31 +446,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var src_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/router */ "./src/router.js");
 /* harmony import */ var src_layout_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/layout/index */ "./src/layout/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -479,9 +461,15 @@ var getComponent = function getComponent(ctx, initData) {
   return src_router__WEBPACK_IMPORTED_MODULE_1__["default"].map(function (_ref, key) {
     var path = _ref.path,
         ssr = _ref.ssr,
-        Component = _ref.component;
+        component = _ref.component;
 
     if (ssr && ctx.url === path) {
+      var Component = component(); // console.log(component)
+      // const Module = await component();
+      // const Component = Module.default;
+      // console.log('22',Component);
+      // return component;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, {
         key: key,
         initData: initData
@@ -490,84 +478,57 @@ var getComponent = function getComponent(ctx, initData) {
   });
 };
 
-var getWrapComponent = function getWrapComponent(component) {
-  var Index = /*#__PURE__*/function (_React$Component) {
-    _inherits(Index, _React$Component);
+var getWrapComponent = function getWrapComponent() {
+  return Promise.all(src_router__WEBPACK_IMPORTED_MODULE_1__["default"].map( /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(_ref2, key) {
+      var path, exact, component, Module, Component, initData;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              path = _ref2.path, exact = _ref2.exact, component = _ref2.component;
+              _context.next = 3;
+              return component();
 
-    var _super = _createSuper(Index);
+            case 3:
+              Module = _context.sent;
+              Component = Module["default"];
 
-    function Index(props) {
-      var _this;
-
-      _classCallCheck(this, Index);
-
-      _this = _super.call(this, props);
-      _this.state = {
-        Component: component
-      };
-      _this.initData = {};
-      return _this;
-    }
-
-    _createClass(Index, [{
-      key: "componentDidMount",
-      value: function () {
-        var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-          var initData;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.t0 = component.getInitData;
-
-                  if (!_context.t0) {
-                    _context.next = 5;
-                    break;
-                  }
-
-                  _context.next = 4;
-                  return component.getInitData();
-
-                case 4:
-                  _context.t0 = _context.sent;
-
-                case 5:
-                  initData = _context.t0;
-                  this.setState({
-                    initData: initData
-                  });
-                  this.initData = initData;
-
-                case 8:
-                case "end":
-                  return _context.stop();
+              if (!(Component.getInitData instanceof Function)) {
+                _context.next = 11;
+                break;
               }
-            }
-          }, _callee, this);
-        }));
 
-        function componentDidMount() {
-          return _componentDidMount.apply(this, arguments);
+              _context.next = 8;
+              return Component.getInitData();
+
+            case 8:
+              _context.t0 = _context.sent;
+              _context.next = 12;
+              break;
+
+            case 11:
+              _context.t0 = null;
+
+            case 12:
+              initData = _context.t0;
+              return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, {
+                initData: initData,
+                path: path
+              }));
+
+            case 14:
+            case "end":
+              return _context.stop();
+          }
         }
+      }, _callee);
+    }));
 
-        return componentDidMount;
-      }()
-    }, {
-      key: "render",
-      value: function render() {
-        var _this$state = this.state,
-            initData = _this$state.initData,
-            Component = _this$state.Component;
-        return initData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, {
-          initData: initData
-        }) : null;
-      }
-    }]);
-
-    return Index;
-  }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null);
+    return function (_x, _x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }()));
 };
 
 
@@ -595,7 +556,7 @@ var getInitData = function getInitData(ctx) {
         Component = _ref.component;
 
     if (ssr && url === path) {
-      initData = Component.getInitData ? Component.getInitData(ctx) : undefined;
+      initData = Component().getInitData instanceof Function ? Component().getInitData(ctx) : null;
     }
   });
   return initData;

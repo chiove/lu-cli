@@ -5,7 +5,7 @@ const getInitData = (ctx) => {
     let initData = undefined;
     routes.map(({ path, ssr, component:Component },key)=>{
         if( ssr && url === path){
-            initData =  Component.getInitData ? Component.getInitData(ctx) : undefined
+            initData = Component().getInitData instanceof Function ?  Component().getInitData(ctx) : null;
         }
     })
     return initData;

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, StaticRouter, Route , Switch} from 'react-router-dom';
+import { BrowserRouter, StaticRouter, Route , Switch,withRouter} from 'react-router-dom';
 import Layout from 'src/layout/index';
-import routes from './router';
 import {getComponent,getWrapComponent} from './utils/getComponent';
 import getInitData from './utils/getInitData';
 
 const serverRender = async (ctx) => {
     const initData = await getInitData(ctx);
+    console.log(initData)
     return <StaticRouter location={ctx.url}>
     <Layout>
       {getComponent(ctx, initData)}
@@ -16,22 +16,19 @@ const serverRender = async (ctx) => {
 }
 
 const clientRender = async () => {
-    const initData = await getInitData(window.location.pathname);
+    const components = await getWrapComponent();
     ReactDOM[window.__USE_SERVER__ ? 'hydrate' : 'render'](
       <BrowserRouter>
-        <Switch>
-          {
-            routes.map(({ path, exact, component:Component }, key) => {
-              console.log(getWrapComponent(Component))
-              return <Route exact={exact} key={key} path={path} render={() => {
-              return <Layout key={key}>
-                  {/* <Component initData={initData}/> */}
-                  {getWrapComponent(Component)}
-              </Layout>
-              }} />
-            })
-          }
-        </Switch>
+          <Switch>
+            {components.map((Component, index)=>{
+              const {path} = Component.props;
+               return <Route key={index} path={path} render={() => {
+                return <Layout key={index}>
+                  {Component}
+                </Layout>
+                }} />
+            })}
+          </Switch>
       </BrowserRouter>,
       document.getElementById('app'));
     if (process.env.NODE_ENV === 'development' && module.hot) {

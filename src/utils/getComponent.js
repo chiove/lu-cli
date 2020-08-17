@@ -1,39 +1,30 @@
 import React from 'react';
 import routes from 'src/router';
 import Layout from 'src/layout/index';
+import {  Route , Switch} from 'react-router-dom';
 
 const getComponent = (ctx, initData) => {
-    return routes.map(({ path, ssr, component:Component },key)=>{
+    return routes.map(({ path, ssr, component },key)=>{
         if( ssr && ctx.url === path){
+            const Component = component();
+            // console.log(component)
+            // const Module = await component();
+            // const Component = Module.default;
+            // console.log('22',Component);
+            // return component;
             return <Component key={key} initData={initData}/>
         }
     })
 }
 
 
-const getWrapComponent = (component) => {
-    class Index extends React.Component {
-        constructor(props){
-            super(props);
-            this.state={
-                Component:component
-            }
-            this.initData={}
-        }
-
-        async componentDidMount () {
-            const initData = component.getInitData && await component.getInitData();
-            this.setState({initData})
-            this.initData = initData;
-        }
-
-        render (){
-            const {initData,Component} = this.state;
-            return initData? <Component initData={initData}/> : null;
-        }
-    }
-
-    return <Index/>
+const getWrapComponent = () => {
+    return Promise.all(routes.map(async ({ path, exact, component }, key) => {
+        const Module = await component();
+        const Component = Module.default;
+        const initData = Component.getInitData instanceof Function ? await Component.getInitData() : null;
+        return <Component initData={initData} path={path}/>
+    }))
 }
 
 

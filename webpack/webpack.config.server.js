@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const {merge} = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const nodeExternals = require('webpack-node-externals');
 const devMode = process.env.NODE_ENV === 'development';
 
@@ -25,6 +26,10 @@ module.exports = merge(baseConfig, {
             __CLIENT__: false,
             __SERVER__: true,
             __DEV__: devMode,
+        }),
+        new ManifestPlugin({
+            fileName: 'server/asset-manifest.json',
+
         }),
     ],
     watchOptions:{

@@ -5,6 +5,7 @@ const Layout = (props) => {
   if (__CLIENT__) {
     return  props.children ? props.children : ''
   } else {
+
     const { initData } = props;
     return (
       <html lang='en'>
@@ -12,7 +13,7 @@ const Layout = (props) => {
           <meta charSet='utf-8' />
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta name='theme-color' content='#000000' />
-          <link rel='stylesheet' href="/static/css/main.css"/>
+          <link rel='stylesheet' href="/static/css/a.css"/>
           <title>React App</title>
         </head>
         <body>
@@ -21,7 +22,7 @@ const Layout = (props) => {
           <script src="/static/js/chunk.chunk.js"></script>
           {
             initData && <script dangerouslySetInnerHTML={{
-              __html: `window.__SERVER__=true; window.__INIT_DATA__ =${serialize(initData)}`
+              __html: `window.__USE_SERVER__=true; window.__INIT_DATA__ =${serialize(initData)}`
             }} />
           }
 
