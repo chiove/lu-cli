@@ -13,16 +13,17 @@ const Layout = (props) => {
           <meta charSet='utf-8' />
           <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
           <meta name='theme-color' content='#000000' />
-          <link rel='stylesheet' href="/static/css/a.css"/>
+          <link rel='stylesheet' href="/static/css/app.css"/>
           <title>React App</title>
         </head>
         <body>
           <div id='app'>{ props.children ? props.children : '' }</div>
+          <script src="/static/js/manifest.js"></script>
+          <script src="/static/js/chunk.js"></script>
           <script src="/static/js/main.js"></script>
-          <script src="/static/js/chunk.chunk.js"></script>
           {
             initData && <script dangerouslySetInnerHTML={{
-              __html: `window.__USE_SERVER__=true; window.__INIT_DATA__ =${serialize(initData)}`
+              __html: `window.__USE_SERVER__=true;`
             }} />
           }
 

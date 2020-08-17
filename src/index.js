@@ -9,7 +9,7 @@ const serverRender = async (ctx) => {
     const initData = await getInitData(ctx);
     console.log(initData)
     return <StaticRouter location={ctx.url}>
-    <Layout>
+    <Layout initData={initData}>
       {getComponent(ctx, initData)}
     </Layout>
 </StaticRouter>
