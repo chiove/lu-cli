@@ -7,11 +7,6 @@ const getComponent = (ctx, initData) => {
     return routes.map(({ path, ssr, component },key)=>{
         if( ssr && ctx.url === path){
             const Component = component();
-            // console.log(component)
-            // const Module = await component();
-            // const Component = Module.default;
-            // console.log('22',Component);
-            // return component;
             return <Component key={key} initData={initData}/>
         }
     })

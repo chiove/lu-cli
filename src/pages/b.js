@@ -1,6 +1,14 @@
 import React from 'react';
-const b = () => <>我是b页2面1</>;
-b.getInitData = async ()=>{
-    return {a:'你大爷'}
+import axios from 'axios';
+const b = (props) => {
+    return <div>{props.initData.data.a}</div>
+};
+b.getInitData = async (ctx)=>{
+    if(__CLIENT__){
+        const res = await axios('/api/getDetails');
+        return res.data;
+    }else{
+        return await ctx.api.list.details(ctx);
+    }
 }
 export default b;

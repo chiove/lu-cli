@@ -9,6 +9,7 @@ const {renderToNodeStream} = require('react-dom/server');
 let serverRender = require('../build/server/app').default;
 
 router.get('/api/getList', controllers.list.index);
+router.get('/api/getDetails', controllers.list.details);
 
 router.get('/*', async (ctx,next) => {
     ctx.type = 'text/html';

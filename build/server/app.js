@@ -128,14 +128,13 @@ var serverRender = /*#__PURE__*/function () {
 
           case 2:
             initData = _context.sent;
-            console.log(initData);
             return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["StaticRouter"], {
               location: ctx.url
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(src_layout_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
               initData: initData
             }, Object(_utils_getComponent__WEBPACK_IMPORTED_MODULE_4__["getComponent"])(ctx, initData))));
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }
@@ -336,32 +335,58 @@ A.getInitData = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
-var b = function b() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "\u6211\u662Fb\u98752\u97621");
+
+var b = function b(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.initData.data.a);
 };
 
-b.getInitData = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  return regeneratorRuntime.wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          return _context.abrupt("return", {
-            a: '你大爷'
-          });
+b.getInitData = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(ctx) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (true) {
+              _context.next = 7;
+              break;
+            }
 
-        case 1:
-        case "end":
-          return _context.stop();
+            _context.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()('/api/getDetails');
+
+          case 3:
+            res = _context.sent;
+            return _context.abrupt("return", res.data);
+
+          case 7:
+            _context.next = 9;
+            return ctx.api.list.details(ctx);
+
+          case 9:
+            return _context.abrupt("return", _context.sent);
+
+          case 10:
+          case "end":
+            return _context.stop();
+        }
       }
-    }
-  }, _callee);
-}));
+    }, _callee);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = (b);
 
 /***/ }),
@@ -468,12 +493,7 @@ var getComponent = function getComponent(ctx, initData) {
         component = _ref.component;
 
     if (ssr && ctx.url === path) {
-      var Component = component(); // console.log(component)
-      // const Module = await component();
-      // const Component = Module.default;
-      // console.log('22',Component);
-      // return component;
-
+      var Component = component();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, {
         key: key,
         initData: initData

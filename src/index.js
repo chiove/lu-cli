@@ -7,7 +7,6 @@ import getInitData from './utils/getInitData';
 
 const serverRender = async (ctx) => {
     const initData = await getInitData(ctx);
-    console.log(initData)
     return <StaticRouter location={ctx.url}>
     <Layout initData={initData}>
       {getComponent(ctx, initData)}

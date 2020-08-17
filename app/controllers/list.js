@@ -39,5 +39,21 @@ module.exports = {
             }
         }
 
+    },
+
+    async details(ctx, next) {
+        if(next){
+            ctx.body={
+                code:0,
+                data:{a:'你大爷'}
+            }
+            await next();
+        }else{
+            return {
+                code:0,
+                data:{a:'你大爷'}
+            }
+        }
+
     }
 }
