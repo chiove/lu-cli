@@ -3,9 +3,10 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './style.less';
 const A = (props) => {
-return <div className={'test'}>{
-        props.initData && props.initData.data.map((item, index)=><div  key={index}><Link to={'/b'}>{item.name}</Link></div>)
-    }</div>;
+    console.log(props,'我是a')
+return <div className={'test'}>
+    <div ><Link to={'/b'}>{'22'}</Link></div>
+    </div>;
 }
 A.getInitData = async (ctx) => {
     if(__CLIENT__){

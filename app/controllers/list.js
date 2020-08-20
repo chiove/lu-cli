@@ -54,6 +54,5 @@ module.exports = {
                 data:{a:'你大爷'}
             }
         }
-
     }
 }
