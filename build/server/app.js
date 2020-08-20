@@ -790,7 +790,7 @@ var getC = function getC(component) {
             C = _this$state.C,
             initData = _this$state.initData;
         return C ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(C, {
-          initData: __INITIAL_DATA__ || initData
+          initData: initData
         }) : '';
       }
     }]);

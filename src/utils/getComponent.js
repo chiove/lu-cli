@@ -47,7 +47,7 @@ const getC = (component) => {
 
         render () {
             const {C, initData} = this.state;
-            return  C ? <C initData={__INITIAL_DATA__ || initData}/> : ''
+            return  C ? <C initData={initData}/> : ''
         }
     }
 
