@@ -3,12 +3,12 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './style.less';
 const A = (props) => {
-    console.log(props,'我是a')
+    console.log(props,'333')
 return <div className={'test'}>
-    <div ><Link to={'/b'}>{'22'}</Link></div>
+    <div ><Link to={'/b'}>{'2112'}</Link></div>
     </div>;
 }
-A.getInitData = async (ctx) => {
+A.getInitalData = async (ctx) => {
     if(__CLIENT__){
         const res = await axios('/api/getList');
         return res.data;

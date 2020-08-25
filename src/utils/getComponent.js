@@ -8,8 +8,8 @@ const getComponent = async (ctx) => {
     return Promise.all(routes.map(async ({ path, exact, component,ssr }, key) => {
         if(ssr && ctx.url === path){
             const Component = component();
-            const initData = Component.getInitData instanceof Function ? await Component.getInitData(ctx) : null;
-            return <Component initData={initData} path={path} key={key}/>
+            const initalData = Component.getinitalData instanceof Function ? await Component.getinitalData(ctx) : null;
+            return <Component initalData={initalData} path={path} key={key}/>
         }
     }))
 }
@@ -19,35 +19,35 @@ const getWrapComponent = () => {
     return Promise.all(routes.map(async ({ path, exact, component }, key) => {
         const Module = await component();
         const Component = Module.default;
-        const initData = Component.getInitData instanceof Function ? await Component.getInitData() : null;
-        return <Component initData={initData} path={path}/>
+        const initalData = Component.getinitalData instanceof Function ? await Component.getinitalData() : null;
+        return <Component initalData={initalData} path={path}/>
     }))
 }
 
 const getC = (component) => {
-    let initData;
+    let initalData;
     class Index extends React.Component {
         constructor(props){
             super(props);
             this.state = {
                 C:undefined,
-                initData:undefined
+                initalData:undefined
             }
         }
 
         async componentDidMount(){
             const Module = await component();
             const C = Module.default;
-            const initData = C.getInitData instanceof Function ? await C.getInitData() : null;
+            const initalData = C.getinitalData instanceof Function ? await C.getinitalData() : null;
             this.setState({
                 C,
-                initData
+                initalData
             });
         }
 
         render () {
-            const {C, initData} = this.state;
-            return  C ? <C initData={initData}/> : ''
+            const {C, initalData} = this.state;
+            return  C ? <C initalData={initalData}/> : ''
         }
     }
 

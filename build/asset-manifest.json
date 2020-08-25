@@ -1,0 +1,10 @@
+{
+  "chunk.js": "/static/js/chunk.js",
+  "chunk.js.map": "/static/js/chunk.js.map",
+  "main.css": "/static/css/main.css",
+  "main.js": "/static/js/main.js",
+  "main.css.map": "/static/css/main.css.map",
+  "main.js.map": "/static/js/main.js.map",
+  "manifest.js": "/static/js/manifest.js",
+  "manifest.js.map": "/static/js/manifest.js.map"
+}

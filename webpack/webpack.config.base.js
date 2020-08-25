@@ -32,7 +32,7 @@ module.exports = {
                     ],
                     require.resolve('@babel/preset-react')
                 ],
-                plugins: []
+                plugins: [require.resolve('@babel/plugin-syntax-dynamic-import')]
                 }
             },
             {
