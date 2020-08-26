@@ -1,8 +1,11 @@
 import React from 'react';
 import serialize from 'serialize-javascript';
+import getAsset from 'src/utils/getAsset';
 
 const Layout = (props) => {
-  const { initalData } = props;
+  const { initalData, asset } = props;
+  const { css, js } = getAsset(asset);
+  console.log(css)
   return (
     <html lang='en'>
       <head>
@@ -10,8 +13,10 @@ const Layout = (props) => {
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
         <meta name='theme-color' content='#000000' />
         <link rel="icon" href="data:image/ico;base64,aWNv"/>
-        <link rel='stylesheet' href="/static/css/app.css"/>
+
+        {/* {css && css.map(item => <link rel='stylesheet' href={item} key={item} />)} */}
         <title>React App</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
       </head>
       <body>
         <div id='app'>{ props.children ? props.children : '' }</div>
@@ -20,9 +25,7 @@ const Layout = (props) => {
             __html: `window.__USE_SERVER__=true; window.__INITIAL_DATA__= ${serialize(initalData)}`
           }} />
         }
-        <script src="/static/js/manifest.js"></script>
-        <script src="/static/js/chunk.js"></script>
-        <script src="/static/js/main.js"></script>
+        {js && js.map(item => <script type="text/javascript" src={item} key={item}/>)}
       </body>
     </html>
   )

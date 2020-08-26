@@ -14,13 +14,36 @@ module.exports = merge(baseConfig, {
         layout:['babel-polyfill',path.resolve(__dirname, "../src/layout/index.js")],
     },
     output: {
-        filename: 'server/[name].js',
-        path: path.resolve(__dirname, '../build/'),
+        filename: '[name].js',
+        path: path.resolve(__dirname, '../build/server/'),
         libraryTarget: 'commonjs2',
         publicPath: "/",
     },
     target: 'node',
     externals: nodeExternals(),
+    module:{
+        rules:[
+            {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                exclude: /node_modules/,
+                loader: require.resolve('babel-loader'),
+                options: {
+                cacheDirectory: true,
+                cacheCompression: false,
+                presets: [
+                    [
+                    require.resolve('@babel/preset-env'),
+                    {
+                        modules: false
+                    }
+                    ],
+                    require.resolve('@babel/preset-react')
+                ],
+                plugins: ['./webpack/no-require-css']
+                }
+            },
+        ]
+    },
     plugins: [
         new webpack.DefinePlugin({
             __CLIENT__: false,

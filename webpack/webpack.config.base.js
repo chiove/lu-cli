@@ -8,12 +8,6 @@ module.exports = {
             src: path.join(__dirname, '../src'),
         }
     },
-    optimization:{
-        splitChunks: {
-            chunks: 'all',
-            name: 'chunk',
-        }
-    },
     module: {
         rules: [
             {
@@ -32,7 +26,7 @@ module.exports = {
                     ],
                     require.resolve('@babel/preset-react')
                 ],
-                plugins: [require.resolve('@babel/plugin-syntax-dynamic-import')]
+                plugins: []
                 }
             },
             {
@@ -89,5 +83,5 @@ module.exports = {
             filename:'static/css/[name].css',
             chunkFilename: 'static/css/[name].css',
         }),
-      ],
+    ],
 }

@@ -1,5 +1,4 @@
-exports.ids = ["c"];
-exports.modules = {
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["c"],{
 
 /***/ "./src/pages/c.js":
 /*!************************!*\
@@ -10,7 +9,7 @@ exports.modules = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/utils/getInitialProps */ "./src/utils/getInitialProps.js");
 
@@ -25,5 +24,5 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-};;
+}]);
 //# sourceMappingURL=c.js.map

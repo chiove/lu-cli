@@ -1,19 +1,21 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import getInitialProps from 'src/utils/getInitialProps';
 import './style.less';
 const A = (props) => {
-    console.log(props,'333')
-return <div className={'test'}>
-    <div ><Link to={'/b'}>{'2112'}</Link></div>
+return <div className='test'>
+    <div ><Link to={'/b'}>{'12112'}</Link></div>
     </div>;
 }
-A.getInitalData = async (ctx) => {
+A.getInitialProps = async (ctx) => {
     if(__CLIENT__){
         const res = await axios('/api/getList');
+        console.log('222')
         return res.data;
     }else{
+        console.log('222')
         return await ctx.api.list.index(ctx);
     }
 }
-export default A;
+export default getInitialProps(A);

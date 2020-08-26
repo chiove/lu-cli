@@ -1,10 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const {merge} = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const devMode = process.env.NODE_ENV === 'development';
-
 const plugins = [
     new webpack.DefinePlugin({
         __CLIENT__: true,
@@ -13,10 +12,10 @@ const plugins = [
     }),
     new ManifestPlugin({
         fileName: 'asset-manifest.json',
-        publicPath: '/'
+        isAsset:false
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
 ];
 
 if(devMode) plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -37,9 +36,19 @@ module.exports = merge(baseConfig,{
         splitChunks: {
             chunks: 'all',
             name: 'chunk',
-        },
-        runtimeChunk: {
-            name: 'manifest',
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.less$/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+                libs: {
+                    test: /node_modules/,
+                    chunks: 'initial',
+                    name: 'libs'
+                }
+            }
         },
     },
     plugins,

@@ -100,11 +100,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var serialize_javascript__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! serialize-javascript */ "serialize-javascript");
 /* harmony import */ var serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(serialize_javascript__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var src_utils_getAsset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/utils/getAsset */ "./src/utils/getAsset.js");
+
 
 
 
 var Layout = function Layout(props) {
-  var initalData = props.initalData;
+  var initalData = props.initalData,
+      asset = props.asset;
+
+  var _getAsset = Object(src_utils_getAsset__WEBPACK_IMPORTED_MODULE_2__["default"])(asset),
+      css = _getAsset.css,
+      js = _getAsset.js;
+
+  console.log(css);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("html", {
     lang: "en"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
@@ -118,25 +127,58 @@ var Layout = function Layout(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "icon",
     href: "data:image/ico;base64,aWNv"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "React App"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "stylesheet",
-    href: "/static/css/app.css"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "React App")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    type: "text/css",
+    href: "/static/css/styles.css"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("body", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "app"
   }, props.children ? props.children : ''), initalData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     dangerouslySetInnerHTML: {
       __html: "window.__USE_SERVER__=true; window.__INITIAL_DATA__= ".concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default()(initalData))
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    src: "/static/js/manifest.js"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    src: "/static/js/chunk.js"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-    src: "/static/js/main.js"
+  }), js && js.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+      type: "text/javascript",
+      src: item,
+      key: item
+    });
   })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
+
+/***/ }),
+
+/***/ "./src/utils/getAsset.js":
+/*!*******************************!*\
+  !*** ./src/utils/getAsset.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+    获取静态资源
+    @param asset Object
+*/
+/* harmony default export */ __webpack_exports__["default"] = (function (asset) {
+  var keys = Object.keys(asset).filter(function (key) {
+    return key.indexOf('.map') === -1;
+  });
+  var css = [];
+  var js = ['/static/js/libs.js', '/static/js/chunk.js', '/static/js/main.js', '/static/js/styles.js'];
+  keys.forEach(function (item) {
+    if (item.indexOf('.css') === 1) {
+      css.push(asset[item]);
+    }
+  });
+  return {
+    css: css,
+    js: js
+  };
+});
 
 /***/ }),
 

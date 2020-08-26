@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/a.css","sources":["webpack:///./src/pages/style.less","webpack:///style.less"],"sourcesContent":[".test{\n    font-size: 40px;\n}",".test {\n  font-size: 40px;\n}\n"],"mappings":"AAAA;AACA;ACCA;;","sourceRoot":""}

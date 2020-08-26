@@ -4,17 +4,25 @@ import { BrowserRouter, StaticRouter, Route , Switch, withRouter, matchPath} fro
 // import { matchRoutes} from 'react-router-config';
 import matchRoute from './utils/matchRoute';
 import Layout from 'src/layout/index';
-import {getComponent,getWrapComponent,getC} from './utils/getComponent';
+import getStaticRoutes from './utils/getStaticRoutes';
 import routes from 'src/router';
 
 const serverRender = async (ctx) => {
-    const currentRoute = routes.find(route => matchPath(ctx.url, route)) || {};
-    const isServer = currentRoute.ssr || false;
-    const Component = currentRoute.component();
-    const initalData = Component.getInitalData instanceof Function ? await Component.getInitalData(ctx) : null;
-    return <StaticRouter location={ctx.url}>
-      <Layout initalData={initalData}>
-        {isServer ?  <Component initalData={initalData}/> : null}
+    const routeList = await getStaticRoutes(routes);
+    const {targetRoute} = matchRoute(ctx.url, routeList);
+    const initalData = targetRoute.component.getInitialProps ? await targetRoute.component.getInitialProps(ctx) : {};
+     const context = {
+      initalData
+     };
+    return <StaticRouter location={ctx.url} context={context}>
+      <Layout initalData={initalData} asset={ctx.asset}>
+        <Switch>
+          {
+            routeList.map((item, key)=>{
+              return item.ssr ? <Route key={key} {...item}/> : undefined
+            })
+          }
+        </Switch>
       </Layout>
     </StaticRouter>
 }
@@ -24,8 +32,6 @@ const clientRender = async () => {
     if (targetRoute) {
         const result = await targetRoute.component().props.load();
         targetRoute.component = result ? result.default : null;
-        targetRoute.initalData = await targetRoute.component.getInitalData();
-        console.log(targetRoute,'3333344444')
         render(routes);
     } else {
       render(routes);
