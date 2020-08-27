@@ -238,7 +238,6 @@ var serverRender = /*#__PURE__*/function () {
             context = {
               initialData: initialData
             };
-            console.log(context);
             return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["StaticRouter"], {
               location: ctx.url,
               context: context
@@ -250,7 +249,7 @@ var serverRender = /*#__PURE__*/function () {
               }, item)) : undefined;
             })))));
 
-          case 15:
+          case 14:
           case "end":
             return _context.stop();
         }

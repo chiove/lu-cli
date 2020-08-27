@@ -15,7 +15,6 @@ const serverRender = async (ctx) => {
     const context = {
       initialData
     };
-    console.log(context)
     return <StaticRouter location={ctx.url} context={context}>
       <Layout initalData={initialData}>
         <Switch>
