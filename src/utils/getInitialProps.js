@@ -74,7 +74,6 @@ export default (SourceComponent)=>{
             // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
 
             const props = {
-                initialData:{},
                ...this.props
             };
 

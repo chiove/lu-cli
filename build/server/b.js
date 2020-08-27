@@ -117,8 +117,6 @@ function _arrayWithHoles(arr) {
 
 
 var b = function b(props) {
-  console.log(props, 'bbb');
-
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       _useState2$ = _useState2[0],
@@ -148,7 +146,7 @@ var b = function b(props) {
       }, _callee);
     }))
   }, // props.initalData.data.a
-  '222'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, list.map(function (item, key) {
+  '1'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, list.map(function (item, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: key
     }, item.name);

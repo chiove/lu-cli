@@ -1,5 +1,6 @@
 
 import React from 'react';
+import getInitialProps from './getInitialProps';
 
 class AsyncComponent extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class AsyncComponent extends React.Component {
     }
 
     render() {
-        return this.state.component ? this.props.children(this.state.component) : <div>loading</div>;
+        return this.state.component ? this.props.children(this.state.component) : null;
     }
 }
 

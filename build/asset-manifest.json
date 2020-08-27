@@ -11,10 +11,9 @@
   "libs.js.map": "/static/js/libs.js.map",
   "main.js": "/static/js/main.js",
   "main.js.map": "/static/js/main.js.map",
-  "manifest.js": "/static/js/manifest.js",
-  "manifest.js.map": "/static/js/manifest.js.map",
   "styles.css": "/static/css/styles.css",
   "styles.js": "/static/js/styles.js",
   "styles.css.map": "/static/css/styles.css.map",
-  "styles.js.map": "/static/js/styles.js.map"
+  "styles.js.map": "/static/js/styles.js.map",
+  "static/images/a.png": "/static/images/a.3b5645f8d57f4ea5431c1d8524173e0f.png"
 }

@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import getInitialProps from 'src/utils/getInitialProps';
 import './b.less';
 const b = (props) => {
-    console.log(props,'bbb');
     const [list =[], setList] = useState([]);
 
     return <div>
@@ -14,7 +13,7 @@ const b = (props) => {
             }}>
                 {
                 // props.initalData.data.a
-                '222'
+                '1'
                 }
         </div>
         <div>

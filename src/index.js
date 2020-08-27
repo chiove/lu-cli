@@ -10,12 +10,12 @@ import routes from 'src/router';
 const serverRender = async (ctx) => {
     const routeList = await getStaticRoutes(routes);
     const {targetRoute} = matchRoute(ctx.url, routeList);
-    const initalData = targetRoute.component.getInitialProps ? await targetRoute.component.getInitialProps(ctx) : {};
-     const context = {
-      initalData
-     };
+    const initialData = targetRoute.component.getInitialProps ? await targetRoute.component.getInitialProps(ctx) : {};
+    const context = {
+    initialData
+    };
     return <StaticRouter location={ctx.url} context={context}>
-      <Layout initalData={initalData} asset={ctx.asset}>
+      <Layout initalData={initialData}>
         <Switch>
           {
             routeList.map((item, key)=>{
@@ -32,7 +32,8 @@ const clientRender = async () => {
     if (targetRoute) {
         const result = await targetRoute.component().props.load();
         targetRoute.component = result ? result.default : null;
-        render(routes);
+        const ssr = targetRoute.ssr || false;
+        render(routes, ssr);
     } else {
       render(routes);
     }
@@ -41,9 +42,8 @@ const clientRender = async () => {
     }
 }
 
-const render = (routeList) => {
-
-  ReactDOM[window.__USE_SERVER__ ? 'hydrate' : 'render'](
+const render = (routeList, ssr = true) => {
+  ReactDOM[window.__USE_SERVER__ && ssr ? 'hydrate' : 'render'](
     <BrowserRouter>
         <Switch>
           {

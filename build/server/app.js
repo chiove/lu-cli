@@ -43,7 +43,7 @@ module.exports =
 /******/
 /******/ 		// "0" is the signal for "already loaded"
 /******/ 		if(installedChunks[chunkId] !== 0) {
-/******/ 			var chunk = require("./" + ({"a~b~c":"a~b~c","a":"a","b":"b","c":"c"}[chunkId]||chunkId) + ".js");
+/******/ 			var chunk = require("./" + ({"a":"a","b":"b","c":"c"}[chunkId]||chunkId) + ".js");
 /******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
 /******/ 			for(var moduleId in moreModules) {
 /******/ 				modules[moduleId] = moreModules[moduleId];
@@ -204,7 +204,7 @@ function _asyncToGenerator(fn) {
 
 var serverRender = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(ctx) {
-    var routeList, _matchRoute, targetRoute, initalData, context;
+    var routeList, _matchRoute, targetRoute, initialData, context;
 
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -234,16 +234,15 @@ var serverRender = /*#__PURE__*/function () {
             _context.t0 = {};
 
           case 11:
-            initalData = _context.t0;
+            initialData = _context.t0;
             context = {
-              initalData: initalData
+              initialData: initialData
             };
             return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["StaticRouter"], {
               location: ctx.url,
               context: context
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(src_layout_index__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              initalData: initalData,
-              asset: ctx.asset
+              initalData: initialData
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, routeList.map(function (item, key) {
               return item.ssr ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({
                 key: key
@@ -265,7 +264,7 @@ var serverRender = /*#__PURE__*/function () {
 
 var clientRender = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var _matchRoute2, targetRoute, result;
+    var _matchRoute2, targetRoute, result, ssr;
 
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -274,7 +273,7 @@ var clientRender = /*#__PURE__*/function () {
             _matchRoute2 = Object(_utils_matchRoute__WEBPACK_IMPORTED_MODULE_3__["default"])(document.location.pathname, src_router__WEBPACK_IMPORTED_MODULE_6__["default"]), targetRoute = _matchRoute2.targetRoute;
 
             if (!targetRoute) {
-              _context2.next = 9;
+              _context2.next = 10;
               break;
             }
 
@@ -284,17 +283,18 @@ var clientRender = /*#__PURE__*/function () {
           case 4:
             result = _context2.sent;
             targetRoute.component = result ? result["default"] : null;
-            render(src_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
-            _context2.next = 10;
+            ssr = targetRoute.ssr || false;
+            render(src_router__WEBPACK_IMPORTED_MODULE_6__["default"], ssr);
+            _context2.next = 11;
             break;
 
-          case 9:
+          case 10:
             render(src_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
-          case 10:
+          case 11:
             if (false) {}
 
-          case 11:
+          case 12:
           case "end":
             return _context2.stop();
         }
@@ -308,7 +308,8 @@ var clientRender = /*#__PURE__*/function () {
 }();
 
 var render = function render(routeList) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a[window.__USE_SERVER__ ? 'hydrate' : 'render']( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, routeList.map(function (item, key) {
+  var ssr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a[window.__USE_SERVER__ && ssr ? 'hydrate' : 'render']( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, routeList.map(function (item, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({
       key: key
     }, item));
@@ -332,20 +333,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var serialize_javascript__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! serialize-javascript */ "serialize-javascript");
 /* harmony import */ var serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(serialize_javascript__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var src_utils_getAsset__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/utils/getAsset */ "./src/utils/getAsset.js");
-
 
 
 
 var Layout = function Layout(props) {
-  var initalData = props.initalData,
-      asset = props.asset;
-
-  var _getAsset = Object(src_utils_getAsset__WEBPACK_IMPORTED_MODULE_2__["default"])(asset),
-      css = _getAsset.css,
-      js = _getAsset.js;
-
-  console.log(css);
+  var initalData = props.initalData;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("html", {
     lang: "en"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("head", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
@@ -369,12 +361,18 @@ var Layout = function Layout(props) {
     dangerouslySetInnerHTML: {
       __html: "window.__USE_SERVER__=true; window.__INITIAL_DATA__= ".concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_1___default()(initalData))
     }
-  }), js && js.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-      type: "text/javascript",
-      src: item,
-      key: item
-    });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
+    src: "/static/js/libs.js"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
+    src: "/static/js/chunk.js"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
+    src: "/static/js/main.js"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
+    src: "/static/js/styles.js"
   })));
 };
 
@@ -398,57 +396,455 @@ var routes = [{
   exact: true,
   ssr: true,
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
-    return Promise.all(/*! import() | a */[__webpack_require__.e("a~b~c"), __webpack_require__.e("a")]).then(__webpack_require__.bind(null, /*! ./pages/a */ "./src/pages/a.js"));
+    return __webpack_require__.e(/*! import() | a */ "a").then(__webpack_require__.bind(null, /*! ./pages/a */ "./src/pages/a.js"));
   })
 }, {
   path: '/b',
   ssr: true,
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
-    return Promise.all(/*! import() | b */[__webpack_require__.e("a~b~c"), __webpack_require__.e("b")]).then(__webpack_require__.bind(null, /*! ./pages/b */ "./src/pages/b.js"));
+    return __webpack_require__.e(/*! import() | b */ "b").then(__webpack_require__.bind(null, /*! ./pages/b */ "./src/pages/b.js"));
   })
 }, {
   path: '/c',
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
-    return Promise.all(/*! import() | c */[__webpack_require__.e("a~b~c"), __webpack_require__.e("c")]).then(__webpack_require__.bind(null, /*! ./pages/c */ "./src/pages/c.js"));
+    return __webpack_require__.e(/*! import() | c */ "c").then(__webpack_require__.bind(null, /*! ./pages/c */ "./src/pages/c.js"));
   })
 }, {
   path: '*',
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
-    return Promise.all(/*! import() | c */[__webpack_require__.e("a~b~c"), __webpack_require__.e("c")]).then(__webpack_require__.bind(null, /*! ./pages/c */ "./src/pages/c.js"));
+    return __webpack_require__.e(/*! import() | c */ "c").then(__webpack_require__.bind(null, /*! ./pages/c */ "./src/pages/c.js"));
   })
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
 /***/ }),
 
-/***/ "./src/utils/getAsset.js":
-/*!*******************************!*\
-  !*** ./src/utils/getAsset.js ***!
-  \*******************************/
+/***/ "./src/utils/getInitialProps.js":
+/*!**************************************!*\
+  !*** ./src/utils/getInitialProps.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/**
-    获取静态资源
-    @param asset Object
-*/
-/* harmony default export */ __webpack_exports__["default"] = (function (asset) {
-  var keys = Object.keys(asset).filter(function (key) {
-    return key.indexOf('.map') === -1;
-  });
-  var css = [];
-  var js = ['/static/js/libs.js', '/static/js/chunk.js', '/static/js/main.js', '/static/js/styles.js'];
-  keys.forEach(function (item) {
-    if (item.indexOf('.css') === 1) {
-      css.push(asset[item]);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
     }
   });
-  return {
-    css: css,
-    js: js
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
   };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+} //高阶组件 用于提取重复逻辑
+
+
+
+var _this = null;
+var _isPop = false; //是否触发过popState
+
+var _isMount = false; //组件是否挂载完成
+
+var popStateCallback = function popStateCallback() {
+  // 使用 popStateCallback 保存函数防止 addEventListener 重复注册
+  if (_this && _this.getInitialProps) {
+    _isPop = true;
+
+    if (_isMount) {
+      //只有当前组件挂载后才能执行数据预取，否则会报错
+      _this.getInitialProps();
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (function (SourceComponent) {
+  return /*#__PURE__*/function (_React$Component) {
+    _inherits(HoComponent, _React$Component);
+
+    var _super = _createSuper(HoComponent);
+
+    function HoComponent(props) {
+      var _this2;
+
+      _classCallCheck(this, HoComponent);
+
+      _this2 = _super.call(this, props);
+      _this2.state = {
+        initialData: {},
+        canClientFetch: false //浏览器端是否需要请求数据
+
+      };
+      return _this2;
+    } //用于服务端调用
+
+
+    _createClass(HoComponent, [{
+      key: "getInitialProps",
+      //用于封装处理
+      value: function () {
+        var _getInitialProps = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var _this$props, match, location, res;
+
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  // ssr首次进入页面以及csr/ssr切换路由时才调用组件的getInitialProps方法
+                  _this$props = this.props, match = _this$props.match, location = _this$props.location;
+
+                  if (!SourceComponent.getInitialProps) {
+                    _context.next = 7;
+                    break;
+                  }
+
+                  _context.next = 4;
+                  return SourceComponent.getInitialProps({
+                    match: match,
+                    location: location
+                  });
+
+                case 4:
+                  _context.t0 = _context.sent;
+                  _context.next = 8;
+                  break;
+
+                case 7:
+                  _context.t0 = {};
+
+                case 8:
+                  res = _context.t0;
+                  this.setState({
+                    initialData: res,
+                    canClientFetch: true
+                  });
+                // console.log('getInitialProps');
+                // let { tdk } = res.page;
+                // if (tdk) {
+                //     document.title = tdk.title;
+                // }
+
+                case 10:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, this);
+        }));
+
+        function getInitialProps() {
+          return _getInitialProps.apply(this, arguments);
+        }
+
+        return getInitialProps;
+      }()
+    }, {
+      key: "componentDidMount",
+      value: function () {
+        var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+          var canClientFetch;
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  //注册事件，用于在页面回退和前进的时候触发
+                  _isMount = true; //组件挂载完成
+
+                  if (window.__USE_SERVER__) {
+                    //只有当启用 ssr 时
+                    _this = this; // 修正_this指向，保证_this指向当前渲染的页面组件
+                    //注册事件
+
+                    window.addEventListener('popstate', popStateCallback);
+
+                    if (_isPop) {
+                      //如果前进或者后退 则需要异步获取数据
+                      this.getInitialProps();
+                    }
+                  }
+
+                  canClientFetch = this.props.history && this.props.history.action === 'PUSH'; //路由跳转的时候可以异步请求数据
+
+                  if (!(canClientFetch || !window.__USE_SERVER__)) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  _context2.next = 6;
+                  return this.getInitialProps();
+
+                case 6:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
+
+        function componentDidMount() {
+          return _componentDidMount.apply(this, arguments);
+        }
+
+        return componentDidMount;
+      }()
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        _isPop = false; //重置为未触发
+
+        _isMount = false; //重置为未挂载
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
+        var props = _objectSpread({}, this.props);
+
+        if (true) {
+          //服务端渲染
+          props.initialData = this.props.staticContext.initialData || {};
+        } else {}
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SourceComponent, props);
+      }
+    }], [{
+      key: "getInitialProps",
+      value: function () {
+        var _getInitialProps2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(ctx) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  if (!SourceComponent.getInitialProps) {
+                    _context3.next = 6;
+                    break;
+                  }
+
+                  _context3.next = 3;
+                  return SourceComponent.getInitialProps(ctx);
+
+                case 3:
+                  _context3.t0 = _context3.sent;
+                  _context3.next = 7;
+                  break;
+
+                case 6:
+                  _context3.t0 = {};
+
+                case 7:
+                  return _context3.abrupt("return", _context3.t0);
+
+                case 8:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }));
+
+        function getInitialProps(_x) {
+          return _getInitialProps2.apply(this, arguments);
+        }
+
+        return getInitialProps;
+      }()
+    }]);
+
+    return HoComponent;
+  }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 });
 
 /***/ }),
@@ -554,12 +950,13 @@ function _asyncToGenerator(fn) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            console.log('11333');
             len = routes.length, i = 0;
             staticRoutes = [];
 
-          case 2:
+          case 3:
             if (!(i < len)) {
-              _context.next = 16;
+              _context.next = 18;
               break;
             }
 
@@ -567,27 +964,28 @@ function _asyncToGenerator(fn) {
             _context.t0 = staticRoutes;
             _context.t1 = _objectSpread;
             _context.t2 = _objectSpread({}, item);
-            _context.next = 9;
+            _context.t3 = {};
+            _context.next = 11;
             return item.component().props.load();
 
-          case 9:
-            _context.t3 = _context.sent["default"];
-            _context.t4 = {
-              component: _context.t3
+          case 11:
+            _context.t4 = _context.sent["default"];
+            _context.t5 = {
+              component: _context.t4
             };
-            _context.t5 = (0, _context.t1)(_context.t2, _context.t4);
+            _context.t6 = (0, _context.t1)(_context.t2, _context.t3, _context.t5);
 
-            _context.t0.push.call(_context.t0, _context.t5);
+            _context.t0.push.call(_context.t0, _context.t6);
 
-          case 13:
+          case 15:
             i++;
-            _context.next = 2;
+            _context.next = 3;
             break;
 
-          case 16:
+          case 18:
             return _context.abrupt("return", staticRoutes);
 
-          case 17:
+          case 19:
           case "end":
             return _context.stop();
         }
@@ -613,6 +1011,7 @@ function _asyncToGenerator(fn) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _getInitialProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getInitialProps */ "./src/utils/getInitialProps.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -768,6 +1167,7 @@ function _getPrototypeOf(o) {
 
 
 
+
 var AsyncComponent = /*#__PURE__*/function (_React$Component) {
   _inherits(AsyncComponent, _React$Component);
 
@@ -853,7 +1253,7 @@ var AsyncComponent = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.state.component ? this.props.children(this.state.component) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "loading");
+      return this.state.component ? this.props.children(this.state.component) : null;
     }
   }]);
 

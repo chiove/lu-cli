@@ -373,13 +373,12 @@ var popStateCallback = function popStateCallback() {
       key: "render",
       value: function render() {
         // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
-        var props = _objectSpread({
-          initialData: {}
-        }, this.props);
+        var props = _objectSpread({}, this.props);
 
         if (true) {
           //服务端渲染
           props.initialData = this.props.staticContext.initialData || {};
+          console.log(props, '555');
         } else {}
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SourceComponent, props);

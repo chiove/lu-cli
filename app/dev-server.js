@@ -4,6 +4,7 @@ const static = require('koa-static');
 const chokidar = require('chokidar');
 const webpack = require('webpack');
 const kwm = require('kwm');
+const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
 const compiler = webpack(config);
 const app = new Koa();
@@ -11,10 +12,12 @@ const app = new Koa();
 let router = require('./router');
 
 
-const start = async () => {
 
+
+const start = async () => {
+    const serverWatchProcess = spawn('npm', ['run', 'server:dev'], { shell: process.platform === 'win32' });
     app.context.compiler = compiler;
-    //HMR
+
     app.use(kwm(compiler));
 
     app.use(static(path.resolve(__dirname, '../build')));
@@ -22,11 +25,14 @@ const start = async () => {
     app.use(router.middleware());
 
     app.listen('3000',() => {
-        compiler.hooks.done.tap('compiler', () => {
-            setTimeout(() => {
-                console.log('http://127.0.0.1:3000');
-            }, 100);
-          });
+      serverWatchProcess.stdout.on('data',(data)=>{
+        console.log(data.toString());
+      });
+      compiler.hooks.done.tap('compiler', () => {
+        setTimeout(() => {
+            console.log('http://127.0.0.1:3000');
+        }, 100);
+      });
     })
      //监听事件
      const watcher = chokidar.watch(path.join(process.cwd(), 'app'));
@@ -43,7 +49,7 @@ start();
   * @params string类型 文件的绝对路径
 */
 const listen = (listenPath) => {
-    // cleanCache(listenPath);
+    cleanCache(listenPath);
     try {
       delete require.cache[require.resolve('./router')];
       router = require('./router');
@@ -57,7 +63,7 @@ const listen = (listenPath) => {
     const module = require.cache[modulePath];
     if (module && module.parent) {
       module.parent.children.splice(module.parent.children.indexOf(module), 1);
-      require.cache[modulePath] = null;
+      delete require.cache[modulePath];
     }
-    require.cache[modulePath] = null;
+    delete require.cache[modulePath];
   };
