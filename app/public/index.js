@@ -2,10 +2,11 @@ const path = require('path');
 const {ssr} = require('./../config');
 const controllers = require('require-all')(path.join(__dirname, '../controllers'));
 const {renderToNodeStream} = require('react-dom/server');
-const clientRender = require('../../build/server/layout').default;
-let serverRender = require('../../build/server/app').default;
+
 
 module.exports = async (ctx,next) => {
+    const clientRender = require('../../build/server/layout').default;
+    let serverRender = require('../../build/server/app').default;
     ctx.type = 'text/html';
     if(ctx.url === '/favicon.ico') return
     delete require.cache[require.resolve('../../build/server/app')];

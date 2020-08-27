@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///style.less","webpack:///b.less"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,wBAAwB;AAC1B;;ACHA;EACE,eAAe;EACf,UAAU;AACZ","file":"static/css/styles.css","sourcesContent":[".test {\n  font-size: 60px;\n  background-color: yellow;\n}\n",".test1 {\n  font-size: 40px;\n  color: red;\n}\n"],"sourceRoot":""}

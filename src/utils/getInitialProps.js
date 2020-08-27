@@ -74,13 +74,14 @@ export default (SourceComponent)=>{
             // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
 
             const props = {
+                initialData:{},
                ...this.props
             };
 
 
             if(__SERVER__){
                 //服务端渲染
-                props.initialData = this.props.staticContext.initialData || {};
+                if(this.props.staticContext)  props.initialData = this.props.staticContext.initialData || {};
             }else{
                 //客户端渲染
                 if (this.state.canClientFetch) {//需要异步请求数据

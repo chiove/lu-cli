@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import C from './c';
 import getInitialProps from 'src/utils/getInitialProps';
 import './b.less';
 const b = (props) => {
@@ -13,10 +14,11 @@ const b = (props) => {
             }}>
                 {
                 // props.initalData.data.a
-                '1'
+                '1133'
                 }
         </div>
         <div>
+            <C/>
             {
                 list.map((item,key)=><span key={key}>{item.name}</span>)
             }

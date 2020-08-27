@@ -11,9 +11,11 @@ const serverRender = async (ctx) => {
     const routeList = await getStaticRoutes(routes);
     const {targetRoute} = matchRoute(ctx.url, routeList);
     const initialData = targetRoute.component.getInitialProps ? await targetRoute.component.getInitialProps(ctx) : {};
+
     const context = {
-    initialData
+      initialData
     };
+    console.log(context)
     return <StaticRouter location={ctx.url} context={context}>
       <Layout initalData={initialData}>
         <Switch>

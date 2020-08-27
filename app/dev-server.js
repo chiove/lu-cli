@@ -6,16 +6,18 @@ const webpack = require('webpack');
 const kwm = require('kwm');
 const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
+const server = require('../webpack/webpack.config.server.js');
 const compiler = webpack(config);
+const serverCompiler = webpack(server);
 const app = new Koa();
 
 let router = require('./router');
 
-
+const serverWatchProcess = spawn('npm', ['run', 'server:dev'], { shell: process.platform === 'win32' });
 
 
 const start = async () => {
-    const serverWatchProcess = spawn('npm', ['run', 'server:dev'], { shell: process.platform === 'win32' });
+
     app.context.compiler = compiler;
 
     app.use(kwm(compiler));
@@ -41,29 +43,32 @@ const start = async () => {
        watcher.on('add', (watchPath) => { listen(watchPath); });
        watcher.on('unlink', (watchPath) => { listen(watchPath); });
      });
+
+     const listen = (listenPath) => {
+      cleanCache(listenPath);
+      try {
+        delete require.cache[require.resolve('./router')];
+        router = require('./router');
+        console.info(`${listenPath}文件更新成功！`);
+      } catch (error) {
+        console.info('文件更新错误:', error);
+      }
+    };
+    //清除缓存，实现热更新
+    const cleanCache = (modulePath) => {
+      const module = require.cache[modulePath];
+      if (module && module.parent) {
+        module.parent.children.splice(module.parent.children.indexOf(module), 1);
+        delete require.cache[modulePath];
+      }
+      delete require.cache[modulePath];
+    };
 }
+
 start();
 
-
-/* 监听修改的文件
-  * @params string类型 文件的绝对路径
-*/
-const listen = (listenPath) => {
-    cleanCache(listenPath);
-    try {
-      delete require.cache[require.resolve('./router')];
-      router = require('./router');
-      console.info(`${listenPath}文件更新成功！`);
-    } catch (error) {
-      console.info('文件更新错误:', error);
-    }
-  };
-  //清除缓存，实现热更新
-  const cleanCache = (modulePath) => {
-    const module = require.cache[modulePath];
-    if (module && module.parent) {
-      module.parent.children.splice(module.parent.children.indexOf(module), 1);
-      delete require.cache[modulePath];
-    }
-    delete require.cache[modulePath];
-  };
+serverCompiler.watch({}, (err, stats) => {
+  if(!stats){
+    console.log('服务端编译完毕！')
+  }
+});
