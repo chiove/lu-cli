@@ -7,7 +7,10 @@ import './style.less';
 const A = (props) => {
 return <div className='test'>
     <div >{props.initialData&&props.initialData.data.map((item)=><Link key={item.name} to={'/b'}>{item.name}</Link>)}</div>
-        <img src={img} alt=""/>12345
+        <img src={img} alt="" style={{
+            height:100,
+            width:100
+        }}/>
     </div>;
 }
 A.getInitialProps = async (ctx) => {

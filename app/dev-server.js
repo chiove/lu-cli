@@ -6,15 +6,14 @@ const webpack = require('webpack');
 const kwm = require('kwm');
 const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
-const server = require('../webpack/webpack.config.server.js');
 const compiler = webpack(config);
-const serverCompiler = webpack(server);
 const app = new Koa();
 
 let router = require('./router');
 
-const serverWatchProcess = spawn('npm', ['run', 'server:dev'], { shell: process.platform === 'win32' });
 
+//启动子进程,服务端编译，为了实现服务端渲染热更新
+const serverWatchProcess = spawn('npm', ['run', 'server:dev'], { shell: process.platform === 'win32' });
 
 const start = async () => {
 
@@ -28,11 +27,11 @@ const start = async () => {
 
     app.listen('3000',() => {
       serverWatchProcess.stdout.on('data',(data)=>{
-        console.log(data.toString());
+        console.info(data.toString());
       });
       compiler.hooks.done.tap('compiler', () => {
         setTimeout(() => {
-            console.log('http://127.0.0.1:3000');
+            console.info('http://127.0.0.1:3000');
         }, 100);
       });
     })
@@ -66,9 +65,3 @@ const start = async () => {
 }
 
 start();
-
-serverCompiler.watch({}, (err, stats) => {
-  if(!stats){
-    console.log('服务端编译完毕！')
-  }
-});

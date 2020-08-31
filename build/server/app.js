@@ -451,8 +451,12 @@ var A = function A(props) {
     }, item.name);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: _a_png__WEBPACK_IMPORTED_MODULE_3__["default"],
-    alt: ""
-  }), "12345");
+    alt: "",
+    style: {
+      height: 100,
+      width: 100
+    }
+  }));
 };
 
 A.getInitialProps = /*#__PURE__*/function () {
@@ -1614,6 +1618,7 @@ var AsyncComponent = /*#__PURE__*/function (_React$Component) {
 
 function loadble(loader) {
   if (true) {
+    //服务端组件重新引入，实现热更新。
     var loaderString = loader.toString();
     var prefix = loaderString.indexOf('src/pages/');
     var suffix = loaderString.indexOf('.js');
