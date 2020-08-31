@@ -21,7 +21,7 @@ const Layout = (props) => {
           }} />
         }
         <script type="text/javascript" src="/static/js/libs.js"/>
-        <script type="text/javascript" src="/static/js/chunk.js"/>
+        <script type="text/javascript" src="/static/js/manifest.js"/>
         <script type="text/javascript" src="/static/js/main.js"/>
         <script type="text/javascript" src="/static/js/styles.js"/>
       </body>

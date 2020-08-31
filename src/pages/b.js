@@ -14,11 +14,10 @@ const b = (props) => {
             }}>
                 {
                 // props.initalData.data.a
-                '1133'
+                '233111'
                 }
         </div>
         <div>
-            <C/>
             {
                 list.map((item,key)=><span key={key}>{item.name}</span>)
             }

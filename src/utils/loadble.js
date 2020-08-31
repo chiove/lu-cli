@@ -32,7 +32,14 @@ class AsyncComponent extends React.Component {
 }
 
 function loadble (loader) {
-    function asyncFn(props) {
+    if(__SERVER__){
+        const loaderString = loader.toString();
+        const prefix = loaderString.indexOf('src/pages/');
+        const suffix = loaderString.indexOf('.js');
+        const url = loaderString.substring(prefix + 10,suffix);
+        require('src/pages/'+url+'.js');
+    }
+    const asyncFn = (props) => {
        return <AsyncComponent load={loader}>
             {(Component) => <Component {...props} />}
         </AsyncComponent>

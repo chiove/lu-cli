@@ -133,7 +133,7 @@ var Layout = function Layout(props) {
     src: "/static/js/libs.js"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     type: "text/javascript",
-    src: "/static/js/chunk.js"
+    src: "/static/js/manifest.js"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     type: "text/javascript",
     src: "/static/js/main.js"

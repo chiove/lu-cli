@@ -52,8 +52,8 @@ module.exports = merge(baseConfig, {
         }),
     ],
     watchOptions:{
-        poll:1000,
-        aggregateTimeout:500,
+        // poll:1000,
+        // aggregateTimeout:500,
         ignored:/node_modules/,
     }
   })
