@@ -1,6 +1,5 @@
 
 import React from 'react';
-import getInitialProps from './getInitialProps';
 
 class AsyncComponent extends React.Component {
     constructor(props) {
@@ -33,7 +32,7 @@ class AsyncComponent extends React.Component {
 
 function loadble (loader) {
     if(__SERVER__){
-        //服务端组件重新引入，实现热更新。
+        //服务端组件重新require引入，实现热更新。
         const loaderString = loader.toString();
         const prefix = loaderString.indexOf('src/pages/');
         const suffix = loaderString.indexOf('.js');

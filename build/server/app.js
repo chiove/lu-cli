@@ -1367,7 +1367,6 @@ function _asyncToGenerator(fn) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _getInitialProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getInitialProps */ "./src/utils/getInitialProps.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -1523,7 +1522,6 @@ function _getPrototypeOf(o) {
 
 
 
-
 var AsyncComponent = /*#__PURE__*/function (_React$Component) {
   _inherits(AsyncComponent, _React$Component);
 
@@ -1618,7 +1616,7 @@ var AsyncComponent = /*#__PURE__*/function (_React$Component) {
 
 function loadble(loader) {
   if (true) {
-    //服务端组件重新引入，实现热更新。
+    //服务端组件重新require引入，实现热更新。
     var loaderString = loader.toString();
     var prefix = loaderString.indexOf('src/pages/');
     var suffix = loaderString.indexOf('.js');
