@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import C from './c';
 import getInitialProps from 'src/utils/getInitialProps';
 import './b.less';
 
 const b = (props) => {
   const [list = [], setList] = useState([]);
-
   return (<div>
     <div
       className="test1"
@@ -17,9 +15,8 @@ const b = (props) => {
       }}
     >
       {
-                // props.initalData.data.a
-                '233111'
-                }
+        props.initialData && props.initialData.data.a
+      }
     </div>
     <div>
       {
@@ -33,7 +30,7 @@ b.getInitialProps = async (ctx) => {
     const res = await axios('/api/getDetails');
     return res.data;
   } else {
-    const res = await ctx.api.list.details();
+    const res = await ctx.controllers.test.index.details();
     return res;
   }
 };

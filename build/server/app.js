@@ -480,7 +480,7 @@ A.getInitialProps = /*#__PURE__*/function () {
 
           case 7:
             _context.next = 9;
-            return ctx.api.list.index();
+            return ctx.controllers.test.index.list();
 
           case 9:
             _res = _context.sent;
@@ -531,8 +531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _c__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./c */ "./src/pages/c.js");
-/* harmony import */ var src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/utils/getInitialProps */ "./src/utils/getInitialProps.js");
+/* harmony import */ var src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/utils/getInitialProps */ "./src/utils/getInitialProps.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -632,7 +631,6 @@ function _arrayWithHoles(arr) {
 
 
 
-
 var b = function b(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -662,8 +660,7 @@ var b = function b(props) {
         }
       }, _callee);
     }))
-  }, // props.initalData.data.a
-  '233111'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, list.map(function (item, key) {
+  }, props.initialData && props.initialData.data.a), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, list.map(function (item, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       key: key
     }, item.name);
@@ -692,7 +689,7 @@ b.getInitialProps = /*#__PURE__*/function () {
 
           case 7:
             _context2.next = 9;
-            return ctx.api.list.details();
+            return ctx.controllers.test.index.details();
 
           case 9:
             _res = _context2.sent;
@@ -711,7 +708,7 @@ b.getInitialProps = /*#__PURE__*/function () {
   };
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_4__["default"])(b));
+/* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_3__["default"])(b));
 
 /***/ }),
 

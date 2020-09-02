@@ -1,11 +1,11 @@
 module.exports = {
-  async index(ctx, next) {
+  async list(ctx, next) {
     if (next) {
       ctx.body = {
         code: 0,
         data: [
           {
-            name: '大大',
+            name: '大大5',
             age: '27',
           },
           {
@@ -13,7 +13,7 @@ module.exports = {
             age: '24',
           },
           {
-            name: '李四',
+            name: '李四4',
             age: '25',
           },
         ],
@@ -24,7 +24,7 @@ module.exports = {
         code: 0,
         data: [
           {
-            name: '大大',
+            name: '大大5',
             age: '27',
           },
           {
@@ -32,7 +32,7 @@ module.exports = {
             age: '24',
           },
           {
-            name: '李四',
+            name: '李四4',
             age: '25',
           },
         ],
@@ -44,13 +44,13 @@ module.exports = {
     if (next) {
       ctx.body = {
         code: 0,
-        data: {a: '你大爷'},
+        data: {a: '1'},
       };
       await next();
     } else {
       return {
         code: 0,
-        data: {a: '你大爷'},
+        data: {a: '1'},
       };
     }
   },

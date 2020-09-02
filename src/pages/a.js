@@ -21,7 +21,7 @@ A.getInitialProps = async (ctx) => {
     const res = await axios('/api/getList');
     return res.data;
   } else {
-    const res = await ctx.api.list.index();
+    const res = await ctx.controllers.test.index.list();
     return res;
   }
 };

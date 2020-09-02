@@ -10,7 +10,7 @@ const config = require('../webpack/webpack.config.client.js');
 const compiler = webpack(config);
 const app = new Koa();
 
-let router = require('./router');
+let router = require('./routes');
 
 
 // 启动子进程,服务端编译，为了实现服务端渲染热更新
@@ -46,8 +46,9 @@ const start = async () => {
   const listen = (listenPath) => {
     cleanCache(listenPath);
     try {
-      delete require.cache[require.resolve('./router')];
-      router = require('./router');
+      delete require.cache[require.resolve('./routes')];
+      router = require('./routes');
+      app.use(router.middleware());
       console.info(`${listenPath}文件更新成功！`);
     } catch (error) {
       console.info('文件更新错误:', error);
