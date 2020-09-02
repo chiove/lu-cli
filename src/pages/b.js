@@ -1,35 +1,40 @@
-import React , {useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import C from './c';
 import getInitialProps from 'src/utils/getInitialProps';
 import './b.less';
-const b = (props) => {
-    const [list =[], setList] = useState([]);
 
-    return <div>
-        <div className="test1" onClick={async ()=>{
-            const res = await axios('/api/getList');
-            setList(list.concat(res.data.data));
-            }}>
-                {
+const b = (props) => {
+  const [list = [], setList] = useState([]);
+
+  return (<div>
+    <div
+      className="test1"
+      onClick={async () => {
+        const res = await axios('/api/getList');
+        setList(list.concat(res.data.data));
+      }}
+    >
+      {
                 // props.initalData.data.a
                 '233111'
                 }
-        </div>
-        <div>
-            {
-                list.map((item,key)=><span key={key}>{item.name}</span>)
-            }
-        </div>
     </div>
-    };
-b.getInitialProps = async (ctx)=>{
-    if(__CLIENT__){
-        const res = await axios('/api/getDetails');
-        return res.data;
-    }else{
-        return await ctx.api.list.details(ctx);
-    }
-}
+    <div>
+      {
+                list.map((item, key) => <span key={key}>{item.name}</span>)
+            }
+    </div>
+  </div>);
+};
+b.getInitialProps = async (ctx) => {
+  if (__CLIENT__) {
+    const res = await axios('/api/getDetails');
+    return res.data;
+  } else {
+    const res = await ctx.api.list.details();
+    return res;
+  }
+};
 export default getInitialProps(b);

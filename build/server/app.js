@@ -162,7 +162,6 @@ function _asyncToGenerator(fn) {
 
 
 
- // import { matchRoutes} from 'react-router-config';
 
 
 
@@ -461,7 +460,8 @@ var A = function A(props) {
 
 A.getInitialProps = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(ctx) {
-    var res;
+    var res, _res;
+
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -480,12 +480,13 @@ A.getInitialProps = /*#__PURE__*/function () {
 
           case 7:
             _context.next = 9;
-            return ctx.api.list.index(ctx);
+            return ctx.api.list.index();
 
           case 9:
-            return _context.abrupt("return", _context.sent);
+            _res = _context.sent;
+            return _context.abrupt("return", _res);
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -671,7 +672,8 @@ var b = function b(props) {
 
 b.getInitialProps = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(ctx) {
-    var res;
+    var res, _res;
+
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -690,12 +692,13 @@ b.getInitialProps = /*#__PURE__*/function () {
 
           case 7:
             _context2.next = 9;
-            return ctx.api.list.details(ctx);
+            return ctx.api.list.details();
 
           case 9:
-            return _context2.abrupt("return", _context2.sent);
+            _res = _context2.sent;
+            return _context2.abrupt("return", _res);
 
-          case 10:
+          case 11:
           case "end":
             return _context2.stop();
         }
@@ -986,14 +989,14 @@ function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
   return _getPrototypeOf(o);
-} //高阶组件 用于提取重复逻辑
+} // 高阶组件 用于提取重复逻辑
 
 
 
 var _this = null;
-var _isPop = false; //是否触发过popState
+var _isPop = false; // 是否触发过popState
 
-var _isMount = false; //组件是否挂载完成
+var _isMount = false; // 组件是否挂载完成
 
 var popStateCallback = function popStateCallback() {
   // 使用 popStateCallback 保存函数防止 addEventListener 重复注册
@@ -1001,7 +1004,7 @@ var popStateCallback = function popStateCallback() {
     _isPop = true;
 
     if (_isMount) {
-      //只有当前组件挂载后才能执行数据预取，否则会报错
+      // 只有当前组件挂载后才能执行数据预取，否则会报错
       _this.getInitialProps();
     }
   }
@@ -1021,16 +1024,16 @@ var popStateCallback = function popStateCallback() {
       _this2 = _super.call(this, props);
       _this2.state = {
         initialData: {},
-        canClientFetch: false //浏览器端是否需要请求数据
+        canClientFetch: false // 浏览器端是否需要请求数据
 
       };
       return _this2;
-    } //用于服务端调用
+    } // 用于服务端调用
 
 
     _createClass(HoComponent, [{
       key: "getInitialProps",
-      //用于封装处理
+      // 用于封装处理
       value: function () {
         var _getInitialProps = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
           var _this$props, match, location, res;
@@ -1096,23 +1099,23 @@ var popStateCallback = function popStateCallback() {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  //注册事件，用于在页面回退和前进的时候触发
-                  _isMount = true; //组件挂载完成
+                  // 注册事件，用于在页面回退和前进的时候触发
+                  _isMount = true; // 组件挂载完成
 
                   if (window.__USE_SERVER__) {
-                    //只有当启用 ssr 时
+                    // 只有当启用 ssr 时
                     _this = this; // 修正_this指向，保证_this指向当前渲染的页面组件
-                    //注册事件
+                    // 注册事件
 
                     window.addEventListener('popstate', popStateCallback);
 
                     if (_isPop) {
-                      //如果前进或者后退 则需要异步获取数据
+                      // 如果前进或者后退 则需要异步获取数据
                       this.getInitialProps();
                     }
                   }
 
-                  canClientFetch = this.props.history && this.props.history.action === 'PUSH'; //路由跳转的时候可以异步请求数据
+                  canClientFetch = this.props.history && this.props.history.action === 'PUSH'; // 路由跳转的时候可以异步请求数据
 
                   if (!(canClientFetch || !window.__USE_SERVER__)) {
                     _context2.next = 6;
@@ -1139,9 +1142,9 @@ var popStateCallback = function popStateCallback() {
     }, {
       key: "componentWillUnmount",
       value: function componentWillUnmount() {
-        _isPop = false; //重置为未触发
+        _isPop = false; // 重置为未触发
 
-        _isMount = false; //重置为未挂载
+        _isMount = false; // 重置为未挂载
       }
     }, {
       key: "render",
@@ -1152,9 +1155,9 @@ var popStateCallback = function popStateCallback() {
         }, this.props);
 
         if (true) {
-          //服务端渲染
+          // 服务端渲染
           if (this.props.staticContext) props.initialData = this.props.staticContext.initialData || {};
-        } else {}
+        } else { var _this$state, canClientFetch, initialData; }
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SourceComponent, props);
       }
@@ -1162,30 +1165,19 @@ var popStateCallback = function popStateCallback() {
       key: "getInitialProps",
       value: function () {
         var _getInitialProps2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(ctx) {
+          var res;
           return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  if (!SourceComponent.getInitialProps) {
-                    _context3.next = 6;
-                    break;
-                  }
-
-                  _context3.next = 3;
+                  _context3.next = 2;
                   return SourceComponent.getInitialProps(ctx);
 
-                case 3:
-                  _context3.t0 = _context3.sent;
-                  _context3.next = 7;
-                  break;
+                case 2:
+                  res = _context3.sent;
+                  return _context3.abrupt("return", SourceComponent.getInitialProps ? res : {});
 
-                case 6:
-                  _context3.t0 = {};
-
-                case 7:
-                  return _context3.abrupt("return", _context3.t0);
-
-                case 8:
+                case 4:
                 case "end":
                   return _context3.stop();
               }
@@ -1308,12 +1300,13 @@ function _asyncToGenerator(fn) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            len = routes.length, i = 0;
+            len = routes.length;
+            i = 0;
             staticRoutes = [];
 
-          case 2:
+          case 3:
             if (!(i < len)) {
-              _context.next = 16;
+              _context.next = 17;
               break;
             }
 
@@ -1321,10 +1314,10 @@ function _asyncToGenerator(fn) {
             _context.t0 = staticRoutes;
             _context.t1 = _objectSpread;
             _context.t2 = _objectSpread({}, item);
-            _context.next = 9;
+            _context.next = 10;
             return item.component().props.load();
 
-          case 9:
+          case 10:
             _context.t3 = _context.sent["default"];
             _context.t4 = {
               component: _context.t3
@@ -1333,15 +1326,15 @@ function _asyncToGenerator(fn) {
 
             _context.t0.push.call(_context.t0, _context.t5);
 
-          case 13:
+          case 14:
             i++;
-            _context.next = 2;
+            _context.next = 3;
             break;
 
-          case 16:
+          case 17:
             return _context.abrupt("return", staticRoutes);
 
-          case 17:
+          case 18:
           case "end":
             return _context.stop();
         }
@@ -1578,19 +1571,16 @@ var AsyncComponent = /*#__PURE__*/function (_React$Component) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                this.setState({
-                  Module: null
-                });
-                _context2.next = 3;
+                _context2.next = 2;
                 return props.load();
 
-              case 3:
+              case 2:
                 Module = _context2.sent;
                 this.setState({
                   component: Module["default"] ? Module["default"] : Module
                 });
 
-              case 5:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -1616,13 +1606,13 @@ var AsyncComponent = /*#__PURE__*/function (_React$Component) {
 
 function loadble(loader) {
   if (true) {
-    //服务端组件重新require引入，实现热更新。
+    // 服务端组件重新require引入，实现热更新。
     var loaderString = loader.toString();
     var prefix = loaderString.indexOf('src/pages/');
     var suffix = loaderString.indexOf('.js');
     var url = loaderString.substring(prefix + 10, suffix);
 
-    __webpack_require__("./src/pages sync recursive ^\\.\\/.*\\.js$")("./" + url + ".js");
+    __webpack_require__("./src/pages sync recursive ^\\.\\/.*\\.js$")("./".concat(url, ".js"));
   }
 
   var asyncFn = function asyncFn(props) {
@@ -1729,7 +1719,8 @@ function _arrayLikeToArray(arr, len) {
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (path, routeList) {
-  var targetRoute, targetMatch;
+  var targetRoute;
+  var targetMatch;
 
   var _iterator = _createForOfIteratorHelper(routeList),
       _step;

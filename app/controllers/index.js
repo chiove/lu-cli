@@ -1,5 +1,5 @@
 const path = require('path');
-const {ssr} = require('./../config');
+const {ssr} = require('../config');
 const controllers = require('require-all')(path.join(__dirname, '../controllers'));
 const {renderToNodeStream} = require('react-dom/server');
 

@@ -28,7 +28,7 @@
     "spaced-comment": 2,
     "no-nested-ternary": 0,
     "react/no-array-index-key": 0,
-    "quotes": [1]
+    "quotes": [1],
   },
   "globals": {
     "__CLIENT__": true,
