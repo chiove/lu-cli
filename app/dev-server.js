@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const path = require('path');
 const koaStatic = require('koa-static');
+const logger = require('koa-logger');
 const chokidar = require('chokidar');
 const webpack = require('webpack');
 const kwm = require('kwm');
@@ -25,6 +26,8 @@ const start = async () => {
 
   app.use(router.middleware());
 
+  app.use(logger());
+
   app.listen('3000', () => {
     serverWatchProcess.stdout.on('data', (data) => {
       console.info(data.toString());
@@ -35,6 +38,7 @@ const start = async () => {
       }, 100);
     });
   });
+
   // 监听事件
   const watcher = chokidar.watch(path.join(process.cwd(), 'app'));
   watcher.on('ready', () => {
