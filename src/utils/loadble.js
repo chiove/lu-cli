@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+
 class AsyncComponent extends React.Component {
   constructor(props) {
     super(props);

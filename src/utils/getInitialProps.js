@@ -27,8 +27,8 @@ export default SourceComponent => class HoComponent extends React.Component {
 
   // 用于服务端调用
   static async getInitialProps(ctx) {
-    const res = await SourceComponent.getInitialProps(ctx);
-    return SourceComponent.getInitialProps ? res : {};
+    const res = SourceComponent.getInitialProps ? await SourceComponent.getInitialProps(ctx) : {};
+    return res;
   }
 
   // 用于封装处理

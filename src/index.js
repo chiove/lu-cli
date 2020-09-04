@@ -5,6 +5,7 @@ import matchRoute from './utils/matchRoute';
 import Layout from 'src/layout/index';
 import getStaticRoutes from './utils/getStaticRoutes';
 import routes from 'src/router';
+import 'antd/dist/antd.less';
 
 const serverRender = async (ctx) => {
   const routeList = await getStaticRoutes(routes);

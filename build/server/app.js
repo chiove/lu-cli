@@ -723,15 +723,21 @@ b.getInitialProps = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/utils/getInitialProps */ "./src/utils/getInitialProps.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/utils/getInitialProps */ "./src/utils/getInitialProps.js");
 
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_1__["default"])(function () {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    onClick: function onClick() {
-      console.log('我是C页面');
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_getInitialProps__WEBPACK_IMPORTED_MODULE_2__["default"])(function () {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "App"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    type: "primary",
+    style: {
+      marginLeft: 8
     }
-  }, "\u6211\u662FC\u9875\u9762"));
+  }, "Primary Button1"), "223");
 }));
 
 /***/ }),
@@ -1167,14 +1173,27 @@ var popStateCallback = function popStateCallback() {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  _context3.next = 2;
+                  if (!SourceComponent.getInitialProps) {
+                    _context3.next = 6;
+                    break;
+                  }
+
+                  _context3.next = 3;
                   return SourceComponent.getInitialProps(ctx);
 
-                case 2:
-                  res = _context3.sent;
-                  return _context3.abrupt("return", SourceComponent.getInitialProps ? res : {});
+                case 3:
+                  _context3.t0 = _context3.sent;
+                  _context3.next = 7;
+                  break;
 
-                case 4:
+                case 6:
+                  _context3.t0 = {};
+
+                case 7:
+                  res = _context3.t0;
+                  return _context3.abrupt("return", res);
+
+                case 9:
                 case "end":
                   return _context3.stop();
               }
@@ -1756,6 +1775,17 @@ function _arrayLikeToArray(arr, len) {
 __webpack_require__(/*! babel-polyfill */"babel-polyfill");
 module.exports = __webpack_require__(/*! /Users/haku/doc/webapp/lu-cli/src/index.js */"./src/index.js");
 
+
+/***/ }),
+
+/***/ "antd":
+/*!***********************!*\
+  !*** external "antd" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("antd");
 
 /***/ }),
 
