@@ -3,6 +3,8 @@ const path = require('path');
 const {merge} = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
 const devMode = process.env.NODE_ENV === 'development';
 const plugins = [
@@ -19,7 +21,16 @@ const plugins = [
   new webpack.NoEmitOnErrorsPlugin(),
 ];
 
-if (devMode) plugins.push(new webpack.HotModuleReplacementPlugin());
+if (devMode) {
+  plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new ProgressBarPlugin({
+      format: `${chalk.cyan.bold('编译进度：') + chalk.magenta.bold('[:bar]')} ${chalk.cyan.bold(':percent')}  (耗时：${chalk.cyan.bold(':elapsed')}秒)`,
+      width: 100,
+      stream: process.stdout ? process.stdout : undefined,
+    })
+  );
+}
 
 const entry = ['babel-polyfill', path.resolve(__dirname, '../src/index.js')];
 if (devMode) entry.splice(1, 0, 'webpack-hot-middleware/client.js?reload=true&noInfo=true');
