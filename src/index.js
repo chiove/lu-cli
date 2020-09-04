@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, StaticRouter, Route, Switch} from 'react-router-dom';
-import matchRoute from './utils/matchRoute';
+import matchRoute from './utils/match-route';
 import Layout from 'src/layout/index';
-import getStaticRoutes from './utils/getStaticRoutes';
+import getStaticRoutes from './utils/get-static-routes';
 import routes from 'src/router';
 import 'antd/dist/antd.less';
 
@@ -11,7 +11,6 @@ const serverRender = async (ctx) => {
   const routeList = await getStaticRoutes(routes);
   const {targetRoute} = matchRoute(ctx.url, routeList);
   const initialData = targetRoute.component.getInitialProps ? await targetRoute.component.getInitialProps(ctx) : {};
-
   const context = {
     initialData,
   };

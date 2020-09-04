@@ -2,7 +2,7 @@ import loadble from './utils/loadble';
 
 const routes = [
   {
-    path: '/a',
+    path: ['/', '/home'],
     exact: true,
     ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'a' */'./pages/a')),
@@ -18,7 +18,7 @@ const routes = [
   },
   {
     path: '*',
-    component: loadble(() => import(/* webpackChunkName: 'c' */'./pages/c')),
+    component: loadble(() => import(/* webpackChunkName: 'not-found' */'./pages/not-found')),
   },
 ];
 

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import img from './a.png';
-import getInitialProps from 'src/utils/getInitialProps';
+import getInitialProps from 'src/utils/get-initial-props';
 import './style.less';
 
 const A = props => (<div className="test">
@@ -15,6 +15,7 @@ const A = props => (<div className="test">
       width: 100,
     }}
   />
+  <div>111333</div>
 </div>);
 A.getInitialProps = async (ctx) => {
   if (__CLIENT__) {

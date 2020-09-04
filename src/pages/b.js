@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import getInitialProps from 'src/utils/getInitialProps';
+import getInitialProps from 'src/utils/get-initial-props';
 import './b.less';
 
 const b = (props) => {

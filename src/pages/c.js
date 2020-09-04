@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from 'antd';
 import 'antd/dist/antd.less';
-import getInitialProps from 'src/utils/getInitialProps';
+import getInitialProps from 'src/utils/get-initial-props';
 
 export default getInitialProps(() => (
   <div className="App">
