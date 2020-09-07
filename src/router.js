@@ -14,6 +14,7 @@ const routes = [
   },
   {
     path: '/c',
+    ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'c' */'./pages/c')),
   },
   {

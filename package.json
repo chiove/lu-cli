@@ -19,6 +19,7 @@
     "koa-logger": "^3.2.1",
     "koa-static": "^5.0.0",
     "kwm": "^1.0.4",
+    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "require-all": "^3.0.0"

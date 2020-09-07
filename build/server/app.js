@@ -106,6 +106,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_layout_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/layout/index */ "./src/layout/index.js");
 /* harmony import */ var _utils_get_static_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/get-static-routes */ "./src/utils/get-static-routes.js");
 /* harmony import */ var src_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/router */ "./src/router.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var antd_lib_locale_zh_CN__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd/lib/locale/zh_CN */ "antd/lib/locale/zh_CN");
+/* harmony import */ var antd_lib_locale_zh_CN__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd_lib_locale_zh_CN__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var moment_locale_zh_cn__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! moment/locale/zh-cn */ "moment/locale/zh-cn");
+/* harmony import */ var moment_locale_zh_cn__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(moment_locale_zh_cn__WEBPACK_IMPORTED_MODULE_10__);
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -168,6 +176,11 @@ function _asyncToGenerator(fn) {
 
 
 
+
+
+
+moment__WEBPACK_IMPORTED_MODULE_9___default.a.locale('zh-cn');
+
 var serverRender = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(ctx) {
     var routeList, _matchRoute, targetRoute, initialData, context;
@@ -204,7 +217,9 @@ var serverRender = /*#__PURE__*/function () {
             context = {
               initialData: initialData
             };
-            return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["StaticRouter"], {
+            return _context.abrupt("return", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_7__["ConfigProvider"], {
+              locale: antd_lib_locale_zh_CN__WEBPACK_IMPORTED_MODULE_8___default.a
+            }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["StaticRouter"], {
               location: ctx.url,
               context: context
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(src_layout_index__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -213,7 +228,7 @@ var serverRender = /*#__PURE__*/function () {
               return item.ssr ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({
                 key: key
               }, item)) : undefined;
-            })))));
+            }))))));
 
           case 14:
           case "end":
@@ -275,11 +290,13 @@ var clientRender = /*#__PURE__*/function () {
 
 var render = function render(routeList) {
   var ssr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a[window.__USE_SERVER__ && ssr ? 'hydrate' : 'render']( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, routeList.map(function (item, key) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a[window.__USE_SERVER__ && ssr ? 'hydrate' : 'render']( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_7__["ConfigProvider"], {
+    locale: antd_lib_locale_zh_CN__WEBPACK_IMPORTED_MODULE_8___default.a
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, routeList.map(function (item, key) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], _extends({
       key: key
     }, item));
-  }))), document.getElementById('app'));
+  })))), document.getElementById('app'));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ( true ? serverRender : undefined);
@@ -732,7 +749,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_get_initial_props__WEBPACK_IMPORTED_MODULE_2__["default"])(function () {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "App"
+    className: "test2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_1__["DatePicker"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     type: "primary",
     style: {
@@ -754,10 +771,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var src_utils_get_initial_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/utils/get-initial-props */ "./src/utils/get-initial-props.js");
+/* harmony import */ var src_utils_get_initial_props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/utils/get-initial-props */ "./src/utils/get-initial-props.js");
 
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_get_initial_props__WEBPACK_IMPORTED_MODULE_2__["default"])(function (props) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_get_initial_props__WEBPACK_IMPORTED_MODULE_1__["default"])(function (props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "not-found-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -802,6 +819,7 @@ var routes = [{
   })
 }, {
   path: '/c',
+  ssr: true,
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
     return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./pages/c */ "./src/pages/c.js"));
   })
@@ -1823,6 +1841,17 @@ module.exports = require("antd");
 
 /***/ }),
 
+/***/ "antd/lib/locale/zh_CN":
+/*!****************************************!*\
+  !*** external "antd/lib/locale/zh_CN" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/locale/zh_CN");
+
+/***/ }),
+
 /***/ "axios":
 /*!************************!*\
   !*** external "axios" ***!
@@ -1842,6 +1871,28 @@ module.exports = require("axios");
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
+
+/***/ }),
+
+/***/ "moment/locale/zh-cn":
+/*!**************************************!*\
+  !*** external "moment/locale/zh-cn" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment/locale/zh-cn");
 
 /***/ }),
 

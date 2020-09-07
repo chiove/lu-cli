@@ -48,13 +48,13 @@ module.exports = {
               hmr: process.env.NODE_ENV === 'development',
             },
           },
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               plugins: () => [require('autoprefixer')()],
             },
           },
-          'css-loader',
         ],
       },
       {

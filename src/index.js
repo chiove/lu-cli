@@ -5,7 +5,13 @@ import matchRoute from './utils/match-route';
 import Layout from 'src/layout/index';
 import getStaticRoutes from './utils/get-static-routes';
 import routes from 'src/router';
+import {ConfigProvider} from 'antd';
+import zhCN from 'antd/lib/locale/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 import 'antd/dist/antd.less';
+
+moment.locale('zh-cn');
 
 const serverRender = async (ctx) => {
   const routeList = await getStaticRoutes(routes);
@@ -14,15 +20,18 @@ const serverRender = async (ctx) => {
   const context = {
     initialData,
   };
-  return (<StaticRouter location={ctx.url} context={context}>
-    <Layout initalData={initialData}>
-      <Switch>
-        {
+  return (<ConfigProvider locale={zhCN}>
+    <StaticRouter location={ctx.url} context={context}>
+      <Layout initalData={initialData}>
+        <Switch>
+          {
             routeList.map((item, key) => (item.ssr ? <Route key={key} {...item}/> : undefined))
           }
-      </Switch>
-    </Layout>
-  </StaticRouter>);
+        </Switch>
+      </Layout>
+    </StaticRouter>
+  </ConfigProvider>
+  );
 };
 
 const clientRender = async () => {
@@ -42,13 +51,15 @@ const clientRender = async () => {
 
 const render = (routeList, ssr = true) => {
   ReactDOM[window.__USE_SERVER__ && ssr ? 'hydrate' : 'render'](
-    <BrowserRouter>
-      <Switch>
-        {
+    <ConfigProvider locale={zhCN}>
+      <BrowserRouter>
+        <Switch>
+          {
             routeList.map((item, key) => <Route key={key} {...item}/>)
           }
-      </Switch>
-    </BrowserRouter>,
+        </Switch>
+      </BrowserRouter>
+    </ConfigProvider>,
     document.getElementById('app'));
 };
 
