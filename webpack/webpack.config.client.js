@@ -46,6 +46,8 @@ module.exports = merge(baseConfig, {
   },
   optimization: {
     splitChunks: {
+      chunks: 'all',
+      name: 'chunk',
       cacheGroups: {
         styles: {
           name: 'styles',
