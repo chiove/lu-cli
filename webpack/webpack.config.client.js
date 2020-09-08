@@ -36,7 +36,7 @@ const entry = ['babel-polyfill', path.resolve(__dirname, '../src/index.js')];
 if (devMode) entry.splice(1, 0, 'webpack-hot-middleware/client.js?reload=true&noInfo=true');
 
 module.exports = merge(baseConfig, {
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   devtool: devMode ? 'cheap-module-source-map' : 'source-map',
   entry,
   output: {
