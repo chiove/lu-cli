@@ -7,6 +7,7 @@ export default async (routes) => {
     staticRoutes.push({
       ...item,
       ...{
+        // eslint-disable-next-line no-await-in-loop
         component: (await item.component().props.load()).default,
       },
     });

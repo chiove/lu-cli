@@ -29,8 +29,9 @@ class AsyncComponent extends React.Component {
 }
 
 function loadble(loader) {
-  if (__SERVER__) {
-    // 服务端组件重新require引入，实现热更新。
+  // 服务端组件重新require引入，实现热更新。
+  // eslint-disable-next-line no-undef
+  if (__SERVER__ && __DEV__) {
     const loaderString = loader.toString();
     const prefix = loaderString.indexOf('src/pages/');
     const suffix = loaderString.indexOf('.js');
