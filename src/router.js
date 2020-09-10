@@ -2,10 +2,10 @@ import loadble from './utils/loadble';
 
 const routes = [
   {
-    path: ['/', '/home'],
+    path: ['/', '/login'],
     exact: true,
     ssr: true,
-    component: loadble(() => import(/* webpackChunkName: 'a' */'./pages/a')),
+    component: loadble(() => import(/* webpackChunkName: 'login' */'./pages/login')),
   },
   {
     path: '/b',

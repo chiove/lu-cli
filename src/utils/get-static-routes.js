@@ -1,6 +1,6 @@
 export default async (routes) => {
-  const len = routes.length; let
-    i = 0;
+  const len = routes.length;
+  let i = 0;
   const staticRoutes = [];
   for (; i < len; i++) {
     const item = routes[i];
