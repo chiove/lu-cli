@@ -3,13 +3,12 @@
 import React from 'react';
 
 let _this = null;
-let _isPop = false;// 是否触发过popState
-let _isMount = false;// 组件是否挂载完成
+let _isPop = false;
+let _isMount = false;
 const popStateCallback = () => {
-  // 使用 popStateCallback 保存函数防止 addEventListener 重复注册
   if (_this && _this.getInitialProps) {
     _isPop = true;
-    if (_isMount) { // 只有当前组件挂载后才能执行数据预取，否则会报错
+    if (_isMount) {
       _this.getInitialProps();
     }
   }
@@ -21,7 +20,7 @@ export default SourceComponent => class HoComponent extends React.Component {
 
     this.state = {
       initialData: {},
-      canClientFetch: false, // 浏览器端是否需要请求数据
+      canClientFetch: false,
     };
   }
 
@@ -51,8 +50,8 @@ export default SourceComponent => class HoComponent extends React.Component {
   async componentDidMount() {
     // 注册事件，用于在页面回退和前进的时候触发
     _isMount = true;// 组件挂载完成
-    if (window.__USE_SERVER__) { // 只有当启用 ssr 时
-      _this = this; // 修正_this指向，保证_this指向当前渲染的页面组件
+    if (window.__USE_SERVER__) {
+      _this = this;
       // 注册事件
       window.addEventListener('popstate', popStateCallback);
       if (_isPop) { // 如果前进或者后退 则需要异步获取数据
@@ -60,7 +59,7 @@ export default SourceComponent => class HoComponent extends React.Component {
       }
     }
 
-    const canClientFetch = this.props.history && this.props.history.action === 'PUSH';// 路由跳转的时候可以异步请求数据
+    const canClientFetch = this.props.history && this.props.history.action === 'PUSH';
     if (canClientFetch || !window.__USE_SERVER__) {
       await this.getInitialProps();
     }
@@ -72,7 +71,6 @@ export default SourceComponent => class HoComponent extends React.Component {
   }
 
   render() {
-    // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
     const props = {
       initialData: {},
       ...this.props,
@@ -89,10 +87,9 @@ export default SourceComponent => class HoComponent extends React.Component {
         props.initialData = initialData || {};
       } else {
         props.initialData = window.__INITIAL_DATA__;
-        window.__INITIAL_DATA__ = null;// 使用过后清除数据,否则其他页面会使用
+        window.__INITIAL_DATA__ = null;
       }
     }
-
     return <SourceComponent {...props} />;
   }
 };

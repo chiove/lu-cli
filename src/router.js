@@ -8,6 +8,11 @@ const routes = [
     component: loadble(() => import(/* webpackChunkName: 'login' */'./pages/login')),
   },
   {
+    path: '/a',
+    ssr: true,
+    component: loadble(() => import(/* webpackChunkName: 'a' */'./pages/a')),
+  },
+  {
     path: '/b',
     ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'b' */'./pages/b')),

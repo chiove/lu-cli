@@ -20,11 +20,12 @@ const b = (props) => {
     </div>
     <div>
       {
-                list.map((item, key) => <span key={key}>{item.name}</span>)
-            }
+        list.map((item, key) => <span key={key}>{item.name}</span>)
+      }
     </div>
   </div>);
 };
+
 b.getInitialProps = async (ctx) => {
   if (__CLIENT__) {
     const res = await axios('/api/getDetails');

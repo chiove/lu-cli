@@ -891,6 +891,12 @@ var routes = [{
     return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./pages/login */ "./src/pages/login/index.js"));
   })
 }, {
+  path: '/a',
+  ssr: true,
+  component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
+    return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./pages/a */ "./src/pages/a.js"));
+  })
+}, {
   path: '/b',
   ssr: true,
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
@@ -1128,17 +1134,14 @@ function _getPrototypeOf(o) {
 
 
 var _this = null;
-var _isPop = false; // 是否触发过popState
-
-var _isMount = false; // 组件是否挂载完成
+var _isPop = false;
+var _isMount = false;
 
 var popStateCallback = function popStateCallback() {
-  // 使用 popStateCallback 保存函数防止 addEventListener 重复注册
   if (_this && _this.getInitialProps) {
     _isPop = true;
 
     if (_isMount) {
-      // 只有当前组件挂载后才能执行数据预取，否则会报错
       _this.getInitialProps();
     }
   }
@@ -1158,8 +1161,7 @@ var popStateCallback = function popStateCallback() {
       _this2 = _super.call(this, props);
       _this2.state = {
         initialData: {},
-        canClientFetch: false // 浏览器端是否需要请求数据
-
+        canClientFetch: false
       };
       return _this2;
     } // 用于服务端调用
@@ -1237,9 +1239,7 @@ var popStateCallback = function popStateCallback() {
                   _isMount = true; // 组件挂载完成
 
                   if (window.__USE_SERVER__) {
-                    // 只有当启用 ssr 时
-                    _this = this; // 修正_this指向，保证_this指向当前渲染的页面组件
-                    // 注册事件
+                    _this = this; // 注册事件
 
                     window.addEventListener('popstate', popStateCallback);
 
@@ -1249,7 +1249,7 @@ var popStateCallback = function popStateCallback() {
                     }
                   }
 
-                  canClientFetch = this.props.history && this.props.history.action === 'PUSH'; // 路由跳转的时候可以异步请求数据
+                  canClientFetch = this.props.history && this.props.history.action === 'PUSH';
 
                   if (!(canClientFetch || !window.__USE_SERVER__)) {
                     _context2.next = 6;
@@ -1283,7 +1283,6 @@ var popStateCallback = function popStateCallback() {
     }, {
       key: "render",
       value: function render() {
-        // 只有在首次进入页面需要将window.__INITIAL_DATA__作为props，路由切换时不需要
         var props = _objectSpread({
           initialData: {}
         }, this.props);
