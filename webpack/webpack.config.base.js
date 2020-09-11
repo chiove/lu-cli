@@ -1,6 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const HappyPack = require('happypack');
+// 多线程运行
+const happyThreadPool = HappyPack.ThreadPool({size: 4});
 const devMode = process.env.NODE_ENV === 'development';
 module.exports = {
   resolve: {
@@ -100,6 +102,18 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
       chunkFilename: 'static/css/[name].css',
+    }),
+    new HappyPack({
+      id: 'babel',
+      loaders: ['cache-loader', 'babel-loader?cacheDirectory'],
+      threadPool: happyThreadPool,
+      verboseWhenProfiling: true,
+    }),
+    new HappyPack({
+      id: 'styles',
+      loaders: ['css-loader', 'less-loader'],
+      threadPool: happyThreadPool,
+      verboseWhenProfiling: true,
     }),
   ],
 };

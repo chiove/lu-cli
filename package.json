@@ -5,7 +5,7 @@
   "author": "chiove",
   "license": "MIT",
   "scripts": {
-    "dev": "rimraf build && cross-env NODE_ENV=development node app/dev-server",
+    "dev": "cross-env NODE_ENV=development node app/dev-server",
     "prod": "node app/prod-server",
     "client:dev": "cross-env NODE_ENV=development webpack --progress --config webpack/webpack.config.client.js",
     "server:dev": "cross-env NODE_ENV=development webpack --progress --config webpack/webpack.config.server.js",
@@ -16,6 +16,7 @@
   "dependencies": {
     "koa": "^2.9.0",
     "koa-better-router": "^2.1.1",
+    "koa-body": "^4.2.0",
     "koa-logger": "^3.2.1",
     "koa-static": "^5.0.0",
     "kwm": "^1.0.4",
@@ -34,6 +35,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
+    "cache-loader": "^4.1.0",
     "chalk": "^4.1.0",
     "chokidar": "^3.4.2",
     "cross-env": "^7.0.2",
@@ -44,6 +46,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-react": "^7.10.0",
     "file-loader": "^6.0.0",
+    "happypack": "^5.0.1",
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
     "mini-css-extract-plugin": "^0.9.0",

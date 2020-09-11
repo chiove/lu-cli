@@ -1,7 +1,25 @@
 
 .login{
+    overflow: auto;
+    background: url("./images/login-background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .login-form{
-        margin: 100px auto;
-        width: 300px;
+        width: 260px;
+    }
+
+    .login-form-button{
+        width: 100%;
+    }
+    .ant-form-item-control-input-content{
+        display: flex;
+        justify-content: space-between;
+    }
+    .login-form-forgot{
+        color: @error-color;
     }
 }

@@ -111,7 +111,7 @@ var Layout = function Layout(props) {
     charSet: "utf-8"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
     name: "viewport",
-    content: "width=device-width, initial-scale=1, shrink-to-fit=no"
+    content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
     name: "theme-color",
     content: "#000000"

@@ -1,21 +1,24 @@
 import React from 'react';
+import axios from 'axios';
 import getInitialProps from 'src/utils/get-initial-props';
-import {Form, Input, Button, Checkbox} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import './style.less';
 
 const NormalLoginForm = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const onFinish = async (value) => {
+    const res = (await axios.post('/api/login', value)).data;
+    if (res.code === 200) {
+      message.success(res.message);
+    } else {
+      message.error(res.message);
+    }
   };
   return (
     <div className="login">
       <Form
         name="normal_login"
         className="login-form"
-        initialValues={{
-          remember: true,
-        }}
         onFinish={onFinish}
       >
         <Form.Item
@@ -23,42 +26,44 @@ const NormalLoginForm = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
+              message: '请输入用户名!',
             },
           ]}
         >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon"/>}
+            autoComplete="off"
+            placeholder="用户名"
+          />
         </Form.Item>
         <Form.Item
           name="password"
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: '请输入密码!',
             },
           ]}
         >
-          <Input
+          <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
+            autoComplete="off"
             type="password"
-            placeholder="Password"
+            placeholder="密码"
           />
         </Form.Item>
         <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-        </Form.Item>
-
-        <Form.Item>
           <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
+            登陆
           </Button>
-          Or <a href="">register now!</a>
+        </Form.Item>
+        <Form.Item>
+          <a className="login-form-register" href="">
+            注册
+          </a>
+          <a className="login-form-forgot" href="">
+            忘记密码?
+          </a>
         </Form.Item>
       </Form>
     </div>
