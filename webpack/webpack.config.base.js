@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
-// 多线程运行
-const happyThreadPool = HappyPack.ThreadPool({size: 4});
+const dllManifest = require('../build/dll/manifest');
+
+const happyThreadPool = HappyPack.ThreadPool({size: require('os').cpus().length - 1});
 const devMode = process.env.NODE_ENV === 'development';
 module.exports = {
   resolve: {
@@ -15,21 +17,7 @@ module.exports = {
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        loader: require.resolve('babel-loader'),
-        options: {
-          cacheDirectory: true,
-          cacheCompression: false,
-          presets: [
-            [
-              require.resolve('@babel/preset-env'),
-              {
-                modules: false,
-              },
-            ],
-            require.resolve('@babel/preset-react'),
-          ],
-          plugins: [],
-        },
+        loader: 'happypack/loader?id=babel',
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -103,15 +91,29 @@ module.exports = {
       filename: 'static/css/[name].css',
       chunkFilename: 'static/css/[name].css',
     }),
-    new HappyPack({
-      id: 'babel',
-      loaders: ['cache-loader', 'babel-loader?cacheDirectory'],
-      threadPool: happyThreadPool,
-      verboseWhenProfiling: true,
+    new webpack.DllReferencePlugin({
+      manifest: dllManifest,
     }),
     new HappyPack({
-      id: 'styles',
-      loaders: ['css-loader', 'less-loader'],
+      id: 'babel',
+      loaders: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            cacheDirectory: true,
+            cacheCompression: false,
+            presets: [
+              [
+                require.resolve('@babel/preset-env'),
+                {
+                  modules: false,
+                },
+              ],
+              require.resolve('@babel/preset-react'),
+            ],
+          },
+        },
+      ],
       threadPool: happyThreadPool,
       verboseWhenProfiling: true,
     }),
