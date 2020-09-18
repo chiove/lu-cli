@@ -12,7 +12,7 @@
     "client:prod": "cross-env NODE_ENV=production webpack --progress --config webpack/webpack.config.client.js",
     "server:prod": "cross-env NODE_ENV=production webpack --progress --config webpack/webpack.config.server.js",
     "build:dll": "cross-env webpack --progress --config webpack/webpack.config.dll.js",
-    "all": "rimraf build && npm run server:prod && npm run client:prod"
+    "build:all": "rimraf build && npm run build:dll && npm run client:prod && npm run server:prod"
   },
   "dependencies": {
     "koa": "^2.9.0",

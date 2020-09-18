@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
-const dllManifest = require('../build/dll/manifest');
+const dllManifest = require('../.dll/dll/manifest');
 
 const happyThreadPool = HappyPack.ThreadPool({size: require('os').cpus().length - 1});
 const devMode = process.env.NODE_ENV === 'development';
