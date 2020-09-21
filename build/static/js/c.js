@@ -1,2 +1,2 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{378:function(e,t,a){"use strict";a.r(t);var n=a(1),r=a.n(n),c=a(101),i=a(372);a(370);t.default=Object(i.a)((function(){return r.a.createElement("div",{className:"test2"},r.a.createElement(c.DatePicker,null),r.a.createElement(c.Button,{type:"primary",style:{marginLeft:8}},"Primary Button1"),"223")}))}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{386:function(e,t,a){"use strict";a.r(t);var n=a(1),r=a.n(n),c=a(101),i=a(372);a(370);t.default=Object(i.a)((function(){return r.a.createElement("div",{className:"test2"},r.a.createElement(c.DatePicker,null),r.a.createElement(c.Button,{type:"primary",style:{marginLeft:8}},"Primary Button1"),"223")}))}}]);
 //# sourceMappingURL=c.js.map
