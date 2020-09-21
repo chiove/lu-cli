@@ -3,6 +3,7 @@ import axios from 'axios';
 import getInitialProps from 'src/utils/get-initial-props';
 import {Form, Input, Button, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
+import logoImg from './images/logo.png';
 import './style.less';
 
 const NormalLoginForm = () => {
@@ -16,56 +17,71 @@ const NormalLoginForm = () => {
   };
   return (
     <div className="login">
-      <Form
-        name="normal_login"
-        className="login-form"
-        onFinish={onFinish}
-      >
-        <Form.Item
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: '请输入用户名!',
-            },
-          ]}
+      <div className="login-content">
+        <div className="login-logo">
+          <img src={logoImg} alt="logo"/>
+        </div>
+        <div className="login-name">
+          千羚
+        </div>
+        <Form
+          name="normal_login"
+          className="login-form"
+          onFinish={onFinish}
         >
-          <Input
-            prefix={<UserOutlined className="site-form-item-icon"/>}
-            autoComplete="off"
-            placeholder="用户名"
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: '请输入密码!',
-            },
-          ]}
-        >
-          <Input.Password
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            autoComplete="off"
-            type="password"
-            placeholder="密码"
-          />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            登陆
-          </Button>
-        </Form.Item>
-        <Form.Item>
-          <a className="login-form-register" href="">
-            注册
-          </a>
-          <a className="login-form-forgot" href="">
-            忘记密码?
-          </a>
-        </Form.Item>
-      </Form>
+          <Form.Item
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: '请输入用户名!',
+              },
+            ]}
+          >
+            <Input
+              size={'large'}
+              prefix={<UserOutlined className="site-form-item-icon"/>}
+              autoComplete="off"
+              placeholder="用户名"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: '请输入密码!',
+              },
+            ]}
+          >
+            <Input.Password
+              size={'large'}
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              autoComplete="off"
+              type="password"
+              placeholder="密码"
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              size={'large'}
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              登录
+            </Button>
+          </Form.Item>
+          <Form.Item>
+            <a className="login-form-register" href="">
+              注册
+            </a>
+            <a className="login-form-forgot" href="">
+              忘记密码?
+            </a>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };
