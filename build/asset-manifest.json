@@ -3,6 +3,8 @@
   "styles.js": "/static/js/styles.js",
   "styles.css.map": "/static/css/styles.css.map",
   "styles.js.map": "/static/js/styles.js.map",
+  "chunk.js": "/static/js/chunk.js",
+  "chunk.js.map": "/static/js/chunk.js.map",
   "a.js": "/static/js/a.js",
   "a.js.map": "/static/js/a.js.map",
   "b.js": "/static/js/b.js",
@@ -21,5 +23,6 @@
   "manifest.js.map": "/static/js/manifest.js.map",
   "static/images/index.less": "/static/images/404.0d70fb0dd18d6bc98a7b4247fa47ac22.jpg",
   "static/images/a.3b5645f8d57f4ea5431c1d8524173e0f.png": "/static/images/a.3b5645f8d57f4ea5431c1d8524173e0f.png",
-  "static/images/style.less": "/static/images/login-background.d0bf0b9f18aa11583952a0e231a76cce.jpg"
+  "static/images/style.less": "/static/images/login-bg.e4ba79881cf923ef410ca0fc358c8f7b.png",
+  "static/images/logo.png": "/static/images/logo.be0ce3680ce7ca422d9d5d6680d919b0.png"
 }
