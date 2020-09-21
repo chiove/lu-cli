@@ -15,9 +15,9 @@ const plugins = [
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
-  // new CleanWebpackPlugin({
-  //   cleanOnceBeforeBuildPatterns: ['** / *', 'static'],
-  // }),
+  new CleanWebpackPlugin({
+    cleanOnceBeforeBuildPatterns: ['** / *', 'static'],
+  }),
 ];
 
 if (devMode) {

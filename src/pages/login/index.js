@@ -21,7 +21,7 @@ const NormalLoginForm = () => {
         <div className="login-logo">
           <img src={logoImg} alt="logo"/>
         </div>
-        <Form
+        {/* <Form
           name="normal_login"
           className="login-form"
           onFinish={onFinish}
@@ -77,7 +77,7 @@ const NormalLoginForm = () => {
               忘记密码?
             </a>
           </div>
-        </Form>
+        </Form> */}
       </div>
     </div>
   );
