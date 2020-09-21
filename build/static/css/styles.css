@@ -24850,7 +24850,7 @@ body,
   border-radius: 10px;
 }
 .login .login-logo {
-  margin: 10px auto;
+  margin: 30px auto 10px auto;
   height: 56px;
   width: 56px;
 }
@@ -24858,22 +24858,15 @@ body,
   height: 56px;
   width: 56px;
 }
-.login .login-name {
-  text-align: center;
-  font-size: 24px;
-  line-height: 32px;
-  color: #262626;
-  font-weight: 500;
-}
 .login .login-form {
-  width: 380px;
+  width: 360px;
   padding: 20px;
   margin: 0;
 }
 .login .login-form-button {
   width: 100%;
 }
-.login .ant-form-item-control-input-content {
+.login .login-form-footer {
   display: flex;
   justify-content: space-between;
 }

@@ -21,9 +21,6 @@ const NormalLoginForm = () => {
         <div className="login-logo">
           <img src={logoImg} alt="logo"/>
         </div>
-        <div className="login-name">
-          千羚
-        </div>
         <Form
           name="normal_login"
           className="login-form"
@@ -72,14 +69,14 @@ const NormalLoginForm = () => {
               登录
             </Button>
           </Form.Item>
-          <Form.Item>
+          <div className="login-form-footer">
             <a className="login-form-register" href="">
               注册
             </a>
             <a className="login-form-forgot" href="">
               忘记密码?
             </a>
-          </Form.Item>
+          </div>
         </Form>
       </div>
     </div>
