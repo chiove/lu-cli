@@ -36,7 +36,7 @@ const NormalLoginForm = () => {
             ]}
           >
             <Input
-              size={'large'}
+              // size={'large'}
               prefix={<UserOutlined className="site-form-item-icon"/>}
               autoComplete="off"
               placeholder="用户名"
@@ -52,7 +52,7 @@ const NormalLoginForm = () => {
             ]}
           >
             <Input.Password
-              size={'large'}
+              // size={'large'}
               prefix={<LockOutlined className="site-form-item-icon" />}
               autoComplete="off"
               type="password"
@@ -61,7 +61,7 @@ const NormalLoginForm = () => {
           </Form.Item>
           <Form.Item>
             <Button
-              size={'large'}
+              // size={'large'}
               type="primary"
               htmlType="submit"
               className="login-form-button"
