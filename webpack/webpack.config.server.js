@@ -52,9 +52,9 @@ module.exports = merge(baseConfig, {
       __SERVER__: true,
       __DEV__: devMode,
     }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['** / *', 'server'],
-    }),
+    // new CleanWebpackPlugin({
+    //   cleanOnceBeforeBuildPatterns: ['** / *', 'server'],
+    // }),
   ],
   watchOptions: {
     ignored: /node_modules/,
