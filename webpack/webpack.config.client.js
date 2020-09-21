@@ -2,8 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const {merge} = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const chalk = require('chalk');
 
 const devMode = process.env.NODE_ENV === 'development';
@@ -13,12 +13,11 @@ const plugins = [
     __SERVER__: false,
     __DEV__: devMode,
   }),
-  new ManifestPlugin({
-    fileName: 'asset-manifest.json',
-    isAsset: false,
-  }),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
+  new CleanWebpackPlugin({
+    cleanOnceBeforeBuildPatterns: ['** / *', 'static'],
+  }),
 ];
 
 if (devMode) {

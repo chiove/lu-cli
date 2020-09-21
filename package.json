@@ -12,7 +12,7 @@
     "client:prod": "cross-env NODE_ENV=production webpack --progress --config webpack/webpack.config.client.js",
     "server:prod": "cross-env NODE_ENV=production webpack --progress --config webpack/webpack.config.server.js",
     "build:dll": "cross-env webpack --progress --config webpack/webpack.config.dll.js",
-    "build:all": "rimraf build && npm run build:dll && npm run client:prod && npm run server:prod"
+    "build:all": "npm run client:prod && npm run server:prod"
   },
   "dependencies": {
     "koa": "^2.9.0",
@@ -38,6 +38,7 @@
     "babel-polyfill": "^6.26.0",
     "chalk": "^4.1.0",
     "chokidar": "^3.4.2",
+    "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
     "css-hot-loader": "^1.4.4",
     "css-loader": "^4.2.0",
@@ -57,7 +58,6 @@
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.1.1",
     "webpack-node-externals": "^2.5.0"
   }

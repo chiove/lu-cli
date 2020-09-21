@@ -3,6 +3,7 @@ const path = require('path');
 const {merge} = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 const nodeExternals = require('webpack-node-externals');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const devMode = process.env.NODE_ENV === 'development';
 
@@ -50,6 +51,9 @@ module.exports = merge(baseConfig, {
       __CLIENT__: false,
       __SERVER__: true,
       __DEV__: devMode,
+    }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['** / *', 'server'],
     }),
   ],
   watchOptions: {
