@@ -36,13 +36,13 @@ const NormalLoginForm = () => {
             ]}
           >
             <Input
-              // size={'large'}
+              size={'large'}
               prefix={<UserOutlined className="site-form-item-icon"/>}
               autoComplete="off"
               placeholder="用户名"
             />
           </Form.Item>
-          <Form.Item
+          {/* <Form.Item
             name="password"
             rules={[
               {
@@ -52,13 +52,13 @@ const NormalLoginForm = () => {
             ]}
           >
             <Input.Password
-              // size={'large'}
+              size={'large'}
               prefix={<LockOutlined className="site-form-item-icon" />}
               autoComplete="off"
               type="password"
               placeholder="密码"
             />
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item>
             <Button
               size={'large'}
