@@ -8,5 +8,11 @@ router.options = {
   prefix: '/api',
 };
 router.post('/login', controllers.login.index.login);
+router.get('/test1', async (ctx, next) => {
+  ctx.body = {
+    a: '你大爷',
+  };
+  await next();
+});
 
 module.exports = router;
