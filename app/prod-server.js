@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const path = require('path');
 const koaBody = require('koa-body');
+const logger = require('koa-logger');
 const router = require('./routes');
 const koaStatic = require('koa-static');
 
@@ -20,6 +21,8 @@ const start = async () => {
     },
   }));
   app.use(router.middleware());
+
+  app.use(logger());
   app.listen('3000', () => {
     console.log('http://127.0.0.1:3000');
   });
