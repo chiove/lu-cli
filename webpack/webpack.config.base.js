@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HappyPack = require('happypack');
-const dllManifest = require('../.dll/dll/manifest');
+const dllManifest = require('../build/dll/manifest');
 
 const happyThreadPool = HappyPack.ThreadPool({size: require('os').cpus().length - 1});
 const devMode = process.env.NODE_ENV === 'development';
@@ -87,6 +88,7 @@ module.exports = {
   },
 
   plugins: [
+    new HardSourceWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
       chunkFilename: 'static/css/[name].css',
@@ -117,5 +119,6 @@ module.exports = {
       threadPool: happyThreadPool,
       verboseWhenProfiling: true,
     }),
+
   ],
 };
