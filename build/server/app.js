@@ -489,7 +489,7 @@ var A = function A(props) {
       height: 100,
       width: 100
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "777"));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "1111"));
 };
 
 A.getInitialProps = /*#__PURE__*/function () {

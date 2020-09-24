@@ -93,6 +93,9 @@ module.exports = {
       {
         test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
       },
+      {
+        test: /url-loader[\\/]dist/,
+      },
     ]),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
