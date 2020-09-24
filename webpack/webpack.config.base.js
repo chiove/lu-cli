@@ -24,7 +24,7 @@ module.exports = {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         loader: require.resolve('url-loader'),
         options: {
-          limit: 1024,
+          limit: 1024 * 10,
           name: 'static/images/[name].[hash].[ext]',
         },
       },
@@ -89,6 +89,11 @@ module.exports = {
 
   plugins: [
     new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin.ExcludeModulePlugin([
+      {
+        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+      },
+    ]),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
       chunkFilename: 'static/css/[name].css',
@@ -119,6 +124,6 @@ module.exports = {
       threadPool: happyThreadPool,
       verboseWhenProfiling: true,
     }),
-
   ],
+  cache: true,
 };

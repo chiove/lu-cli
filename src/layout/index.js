@@ -9,8 +9,10 @@ const Layout = (props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <meta name="theme-color" content="#000000" />
-        <link rel="icon" href="data:image/ico;base64,aWNv"/>
-        <title>React App</title>
+        <meta name="keywords" content="koa-react-ssr"/>
+        <meta name="description" content="服务端渲染"/>
+        {/* <link rel="icon" href="data:image/ico;base64,aWNv"/> */}
+        <title>蓝羚</title>
         <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
       </head>
       <body>
