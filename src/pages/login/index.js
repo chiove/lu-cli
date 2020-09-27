@@ -8,7 +8,6 @@ import './style.less';
 
 const NormalLoginForm = () => {
   const onFinish = async (value) => {
-    console.log(value);
     const res = (await axios.post('/api/login', value)).data;
     if (res.code === 200) {
       message.success(res.message);

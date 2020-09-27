@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint-config-ali/react"],
+  "extends": ["eslint-config-ali/react", "plugin:react-hooks/recommended"],
   "parser": "babel-eslint",
   "rules": {
     "new-cap": "off",

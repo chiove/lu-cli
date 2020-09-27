@@ -11,7 +11,7 @@ const Layout = (props) => {
         <meta name="theme-color" content="#000000" />
         <meta name="keywords" content="koa-react-ssr"/>
         <meta name="description" content="服务端渲染"/>
-        {/* <link rel="icon" href="data:image/ico;base64,aWNv"/> */}
+        <link rel="icon" href="data:image/ico;base64,aWNv"/>
         <title>蓝羚</title>
         <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
       </head>
