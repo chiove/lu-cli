@@ -19,3 +19,8 @@
 ## 安装
 
 没有发布npm，所以就
+
+```
+git clone https://github.com/chiove/lu-cli.git
+```
+这样吧！
