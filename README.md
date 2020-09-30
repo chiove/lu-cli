@@ -51,3 +51,35 @@ yarn build:all
 ```
 yarn prod
 ```
+## 用法
+ 一键启动是否支持服务端渲染，就问屌不屌！
+#### app/config/ssr.js
+
+```
+module.exports = {
+  ssr: true, //这里设置整个项目是否需要服务端渲染。true为服务端渲染
+};
+```
+当然，如果我开启了服务端渲染，但是我有一个页面需要用到window，对就是window，在服务端是不存在window的，所以在
+#### src/router.js
+中，加入了一个标识
+```
+import loadble from './utils/loadble';
+
+const routes = [
+  {
+    path: '/',
+    exact: true,
+    ssr: false, //这个就是这个页面不使用服务端渲染，你就可以嚣张跋扈的使用window了
+    component: loadble(() => import(/* webpackChunkName: 'index' */'./pages/index')),
+  },
+  {
+    path: '*',
+    component: loadble(() => import(/* webpackChunkName: 'not-found' */'./pages/not-found')),
+  },
+];
+
+export default routes;
+```
+完了，就这样吧，感谢支持。么么么么么哒💋
+
