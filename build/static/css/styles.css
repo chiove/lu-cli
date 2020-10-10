@@ -24834,6 +24834,10 @@ body,
   overflow: auto;
 }
 
+.canvas {
+  height: 100%;
+  width: 100%;
+}
 
 .login {
   overflow: auto;

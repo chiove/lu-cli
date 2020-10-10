@@ -16,7 +16,7 @@ const app = new Koa();
 let router = require('./routes');
 
 // 启动子进程,服务端编译，为了实现服务端渲染热更新
-spawn('npm', ['run', 'server:dev'], {shell: process.platform === 'win32'});
+const childProcess = spawn('npm', ['run', 'server:dev'], {shell: process.platform === 'win32'});
 
 const start = async () => {
   app.context.compiler = compiler;
@@ -44,6 +44,7 @@ const start = async () => {
   app.use(logger());
 
   app.listen('3000', () => {
+    childProcess.on('data', () => {});
     compiler.hooks.done.tap('compiler', () => {
       setTimeout(() => {
         console.info(chalk.cyan('\r\n 🚀 http://127.0.0.1:3000\r\n'));

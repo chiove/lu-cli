@@ -4,7 +4,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    ssr: true,
+    ssr: false,
     component: loadble(() => import(/* webpackChunkName: 'index' */'./pages/index')),
   },
   {
