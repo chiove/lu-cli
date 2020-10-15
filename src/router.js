@@ -4,7 +4,6 @@ const routes = [
   {
     path: '/home',
     exact: true,
-    ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'index' */'./pages/index')),
     routes: [
       {
@@ -25,6 +24,11 @@ const routes = [
     ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'login' */'./pages/login')),
   },
+  // {
+  //   path: '/a',
+  //   ssr: true,
+  //   component: loadble(() => import(/* webpackChunkName: 'a' */'./pages/a')),
+  // },
   {
     path: '/b',
     ssr: true,

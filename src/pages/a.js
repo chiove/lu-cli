@@ -32,6 +32,7 @@ A.getInitialProps = async (ctx) => {
     return res.data;
   } else {
     const res = await ctx.controllers.test.index.list();
+    console.log(res);
     return res;
   }
 };

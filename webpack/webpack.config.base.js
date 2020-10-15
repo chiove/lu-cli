@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HappyPack = require('happypack');
 const dllManifest = require('../build/dll/manifest');
 
@@ -88,15 +88,15 @@ module.exports = {
   },
 
   plugins: [
-    new HardSourceWebpackPlugin(),
-    new HardSourceWebpackPlugin.ExcludeModulePlugin([
-      {
-        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-      },
-      {
-        test: /url-loader[\\/]dist/,
-      },
-    ]),
+    // new HardSourceWebpackPlugin(),
+    // new HardSourceWebpackPlugin.ExcludeModulePlugin([
+    //   {
+    //     test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+    //   },
+    //   {
+    //     test: /url-loader[\\/]dist/,
+    //   },
+    // ]),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].css',
       chunkFilename: 'static/css/[name].css',
