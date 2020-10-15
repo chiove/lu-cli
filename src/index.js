@@ -28,7 +28,14 @@ const serverRender = async (ctx) => {
       <Layout initalData={initialData}>
         <Switch>
           {
-            routeList.map((item, key) => (item.ssr ? <Route key={key} {...item}/> : undefined))
+            routeList.map((item, key) => (item.ssr ? <Route
+              key={key}
+              path={item.path}
+              render={(props) => {
+                const Component = item.component;
+                return <Component {...props} routes={item.routes} />;
+              }}
+            /> : undefined))
           }
         </Switch>
       </Layout>
@@ -58,7 +65,14 @@ const render = (routeList, ssr = true) => {
       <BrowserRouter>
         <Switch>
           {
-            routeList.map((item, key) => <Route key={key} {...item}/>)
+            routeList.map((item, key) => (<Route
+              key={key}
+              path={item.path}
+              render={(props) => {
+                const Component = item.component;
+                return <Component {...props} routes={item.routes} />;
+              }}
+            />))
           }
         </Switch>
       </BrowserRouter>

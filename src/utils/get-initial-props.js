@@ -17,7 +17,6 @@ const popStateCallback = () => {
 export default SourceComponent => class HoComponent extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       initialData: {},
       canClientFetch: false,

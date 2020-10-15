@@ -1,4 +1,82 @@
-.canvas{
-    height: 100%;
-    width: 100%;
+@media only screen and (max-width:1200px ) {
+    .home{
+        .home-center{
+           width: 100%;
+        }
+    }
+}
+
+@media only screen and (min-width:1200px ) {
+    .home{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: flex-start;
+        .home-center{
+            width: 1170px;
+            height: 600px;
+            margin: auto;
+            border-radius: 4px;
+            box-shadow: @box-shadow-base;
+            display: flex;
+            justify-self: start;
+        }
+        .home-sidebar{
+            width: 100px;
+            height: 100%;
+            border-radius: 4px;
+            background-color: #f8e9e9;
+        }
+        .home-sidebar-item{
+            height: 130px;
+            text-align: center;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            border-bottom: 1px solid #ccc4;
+            &:first-child{
+                height: 210px;
+                align-items: center;
+            }
+        }
+        .home-sidebar-logo-container{
+            width: 68px;
+            height:68px;
+            padding: 10px;
+            border: 1px solid #ccc4;
+            border-radius: 50%;
+            animation:rotate 5s linear infinite;
+            cursor: pointer;
+        }
+
+        @keyframes rotate {
+            0%{transform:rotate(0deg);}
+            25%{transform:rotate(90deg);}
+            50%{transform:rotate(180deg);}
+            75%{transform:rotate(270deg);}
+            100%{transform:rotate(360deg);}
+        }
+
+        .home-sidebar-logo{
+            width: 48px;
+            height:48px;
+            border-radius: 50%;
+            background-image: url('./images/logo.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .home-sidebar-icon{
+            color: #838383;
+            cursor: pointer;
+        }
+        .home-sidebar-name{
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        .home-content{
+            // background-image: url('./images/background.jpg');
+            width: 1050px;
+            margin-left: 20px;
+        }
+    }
 }
