@@ -366,6 +366,9 @@ var Layout = function Layout(props) {
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     type: "text/javascript",
+    src: "/static/js/particles.min.js"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
     src: "/dll/dll.js"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     type: "text/javascript",
@@ -820,17 +823,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import Particles from 'particlesjs';
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(src_utils_get_initial_props__WEBPACK_IMPORTED_MODULE_5__["default"])(function (props) {
   var canvas = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    console.log(canvas.current);
-    var ctx = canvas.current.getContext('2d');
-    ctx.fillStyle = '#CCCCCC';
-    ctx.fillRect(255, 0, 150, 75);
-    console.log(ctx);
-  });
-  console.log('555555');
+    // Particles.init({
+    //   selector: '.home-canvas',
+    //   maxParticles: 140,
+    //   sizeVariations: 10,
+    //   minDistance: 150,
+    //   color: ['#2EB67D', '#ECB22E', '#E01E5B', '#36C5F0', '#F55D7F', '#9147FF'],
+    //   linesColor: '#808080',
+    // });
+    console.log(particlesJS);
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("canvas", {
@@ -844,23 +851,29 @@ __webpack_require__.r(__webpack_exports__);
     className: "home-sidebar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-logo-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-logo"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home/a"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ant_design_icons__WEBPACK_IMPORTED_MODULE_2__["FileTextOutlined"], {
     className: "home-sidebar-icon"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-name"
-  }, "\u7B80\u5386")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\u7B80\u5386"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home/login1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ant_design_icons__WEBPACK_IMPORTED_MODULE_2__["EditOutlined"], {
     className: "home-sidebar-icon"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-name"
-  }, "\u535A\u5BA2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\u535A\u5BA2"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-sidebar-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ant_design_icons__WEBPACK_IMPORTED_MODULE_2__["ContactsOutlined"], {
     className: "home-sidebar-icon"
@@ -1099,7 +1112,6 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   path: '/home',
   exact: true,
-  ssr: true,
   component: Object(_utils_loadble__WEBPACK_IMPORTED_MODULE_0__["default"])(function () {
     return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./pages/index */ "./src/pages/index/index.js"));
   }),

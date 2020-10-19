@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react';
-import {BrowserRouter, StaticRouter, Route, Switch} from 'react-router-dom';
+import {Link, StaticRouter, Route, Switch} from 'react-router-dom';
 import {
   FileTextOutlined,
   EditOutlined,
@@ -8,38 +8,37 @@ import {
 import axios from 'axios';
 import {Button} from 'antd';
 import getInitialProps from 'src/utils/get-initial-props';
-import Particles from 'particlesjs';
+import options from './options';
 import './style.less';
 
 export default getInitialProps((props) => {
-  const canvas = useRef();
   useEffect(() => {
-    Particles.init({
-      selector: '.home-canvas',
-      maxParticles: 140,
-      sizeVariations: 10,
-      minDistance: 150,
-      color: ['#2EB67D', '#ECB22E', '#E01E5B', '#36C5F0', '#F55D7F', '#9147FF'],
-      linesColor: '#808080',
-    });
-  });
+    window.particlesJS('home-canvas', options);
+  }, []);
+  const flag = props.location.pathname === '/home';
   return (
     <div className="home">
-      <canvas ref={canvas} width="100%" height="100%" className="home-canvas"/>
+      <div id="home-canvas" />
       <div className="home-center">
         <div className="home-sidebar">
           <div className="home-sidebar-item">
-            <div className="home-sidebar-logo-container">
-              <div className="home-sidebar-logo" />
-            </div>
+            <Link to="/home">
+              <div className="home-sidebar-logo-container">
+                <div className="home-sidebar-logo" />
+              </div>
+            </Link>
           </div>
           <div className="home-sidebar-item">
-            <FileTextOutlined className="home-sidebar-icon"/>
-            <div className="home-sidebar-name">简历</div>
+            <Link to="/home/a">
+              <FileTextOutlined className="home-sidebar-icon"/>
+              <div className="home-sidebar-name">简历</div>
+            </Link>
           </div>
           <div className="home-sidebar-item">
-            <EditOutlined className="home-sidebar-icon"/>
-            <div className="home-sidebar-name">博客</div>
+            <Link to="/home/login1">
+              <EditOutlined className="home-sidebar-icon"/>
+              <div className="home-sidebar-name">博客</div>
+            </Link>
           </div>
           <div className="home-sidebar-item">
             <ContactsOutlined className="home-sidebar-icon"/>
@@ -47,16 +46,27 @@ export default getInitialProps((props) => {
           </div>
         </div>
         <div className="home-content">
-          <Switch>
-            {
-              props.routes.map((item, key) => (<Route
-                key={key}
-                exact
-                path={item.path}
-                component={item.component}
-              />))
-          }
-          </Switch>
+          {
+           !flag ? <Switch>
+             {
+             props.routes.map((item, key) => (<Route
+               key={key}
+               exact
+               path={item.path}
+               component={item.component}
+             />))
+         }
+           </Switch> : (
+             <div>
+               <div className="home-header">
+                 <div className="home-header-img" />
+               </div>
+               <div className="home-author">
+                 陆朝维
+               </div>
+             </div>
+           )
+         }
         </div>
       </div>
     </div>

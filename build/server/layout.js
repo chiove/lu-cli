@@ -136,6 +136,9 @@ var Layout = function Layout(props) {
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     type: "text/javascript",
+    src: "/static/js/particles.min.js"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
+    type: "text/javascript",
     src: "/dll/dll.js"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
     type: "text/javascript",

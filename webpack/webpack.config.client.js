@@ -4,6 +4,7 @@ const {merge} = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const chalk = require('chalk');
 
 const devMode = process.env.NODE_ENV === 'development';
@@ -14,9 +15,17 @@ const plugins = [
     __DEV__: devMode,
   }),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
   new CleanWebpackPlugin({
     cleanOnceBeforeBuildPatterns: ['** / *', 'static'],
+  }),
+  new CopyPlugin({
+    patterns: [
+      {
+        from: path.resolve(__dirname, '../src/assets/js/particles.min.js'),
+        to: path.resolve(__dirname, '../build/static/js'),
+      },
+    ],
+
   }),
 ];
 

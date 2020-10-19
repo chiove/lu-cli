@@ -14,7 +14,6 @@ const compiler = webpack(config);
 const app = new Koa();
 
 let router = require('./routes');
-
 // 启动子进程,服务端编译，为了实现服务端渲染热更新
 const childProcess = spawn('npm', ['run', 'server:dev'], {shell: process.platform === 'win32'});
 

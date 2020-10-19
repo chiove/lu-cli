@@ -13,6 +13,9 @@ module.exports = {
       src: path.join(__dirname, '../src'),
     },
   },
+  performance: {
+    hints: false,
+  },
   module: {
     rules: [
       {
@@ -122,6 +125,10 @@ module.exports = {
               require.resolve('@babel/preset-react'),
             ],
           },
+          plugins: [['import', {
+            libraryName: 'antd',
+            style: true,
+          }]],
         },
       ],
       threadPool: happyThreadPool,
