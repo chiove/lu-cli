@@ -24,11 +24,11 @@ const routes = [
     ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'login' */'./pages/login')),
   },
-  // {
-  //   path: '/a',
-  //   ssr: true,
-  //   component: loadble(() => import(/* webpackChunkName: 'a' */'./pages/a')),
-  // },
+  {
+    path: '/a',
+    ssr: true,
+    component: loadble(() => import(/* webpackChunkName: 'a' */'./pages/a')),
+  },
   {
     path: '/b',
     ssr: true,
@@ -41,6 +41,7 @@ const routes = [
   },
   {
     path: '*',
+    ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'not-found' */'./pages/not-found')),
   },
 ];
