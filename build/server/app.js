@@ -878,10 +878,6 @@ function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-function _readOnlyError(name) {
-  throw new Error("\"" + name + "\" is read-only");
-}
-
 
 
 
@@ -895,35 +891,62 @@ function _readOnlyError(name) {
       typing = _useState2[0],
       setTyping = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      index = _useState4[0],
-      setIndex = _useState4[1];
-
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     // window.particlesJS('home-canvas', options);
     skills();
+    return function () {
+      clearTimeout(timer);
+    };
   }, []);
+  var addIndex = 0;
+  var deleteIndex = -1;
+  var arrayIndex = 0;
   var timer = null;
 
   var skills = function skills() {
     var skillsArray = ['html', 'js', 'css', 'react', 'vue', 'webpack', 'node', 'koa', 'ssr'];
-    var b = 'html';
 
-    if (index < b.length) {
-      setIndex((_readOnlyError("index"), index++));
-      setTyping(b.slice(0, i++));
-      timer = setTimeout(skills, 250);
+    if (addIndex <= skillsArray[arrayIndex].length) {
+      setTyping(skillsArray[arrayIndex].slice(0, addIndex++));
+
+      if (addIndex > skillsArray[arrayIndex].length) {
+        timer = setTimeout(skills, 1500);
+      } else {
+        timer = setTimeout(skills, 100);
+      }
     } else {
-      setTyping(b);
       clearTimeout(timer);
+
+      if (deleteIndex > -skillsArray[arrayIndex].length) {
+        setTyping(skillsArray[arrayIndex].slice(0, deleteIndex--));
+        timer = setTimeout(skills, 100);
+      } else {
+        clearTimeout(timer);
+        setTyping('');
+        addIndex = 0;
+
+        if (arrayIndex < skillsArray.length - 1) {
+          arrayIndex += 1;
+          deleteIndex = -1;
+          timer = setTimeout(skills, 100);
+        } else {
+          arrayIndex = 0;
+          timer = setTimeout(skills, 100);
+        }
+      }
     }
   };
 
   var flag = props.location.pathname === '/home';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home"
-  }, typing);
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "home-typing-title"
+  }, "\u4F1A\u7684\u6280\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "home-typing-content"
+  }, typing), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "home-typing-input"
+  }, "|"));
 }));
 
 /***/ }),

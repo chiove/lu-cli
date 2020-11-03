@@ -14,52 +14,51 @@ import './style.less';
 export default getInitialProps((props) => {
   const [typing, setTyping] = useState('');
   useEffect(() => {
-    // window.particlesJS('home-canvas', options);
+    window.particlesJS('home-canvas', options);
+  }, []);
+
+  useEffect(() => {
+    let addIndex = 0;
+    let deleteIndex = -1;
+    let arrayIndex = 0;
+    let timer = null;
+    const skills = () => {
+      const skillsArray = ['html', 'js', 'css', 'react', 'vue', 'webpack', 'node', 'koa', 'ssr'];
+      if (addIndex <= skillsArray[arrayIndex].length) {
+        setTyping(skillsArray[arrayIndex].slice(0, addIndex++));
+        if (addIndex > skillsArray[arrayIndex].length) {
+          timer = setTimeout(skills, 1500);
+        } else {
+          timer = setTimeout(skills, 80);
+        }
+      } else {
+        clearTimeout(timer);
+        if (deleteIndex > -skillsArray[arrayIndex].length) {
+          setTyping(skillsArray[arrayIndex].slice(0, deleteIndex--));
+          timer = setTimeout(skills, 80);
+        } else {
+          clearTimeout(timer);
+          setTyping('');
+          addIndex = 0;
+          if (arrayIndex < skillsArray.length - 1) {
+            arrayIndex += 1;
+            deleteIndex = -1;
+            timer = setTimeout(skills, 80);
+          } else {
+            arrayIndex = 0;
+            timer = setTimeout(skills, 80);
+          }
+        }
+      }
+    };
     skills();
     return () => { clearTimeout(timer); };
   }, []);
 
-  let addIndex = 0;
-  let deleteIndex = -1;
-  let arrayIndex = 0;
-  let timer = null;
-  const skills = () => {
-    const skillsArray = ['html', 'js', 'css', 'react', 'vue', 'webpack', 'node', 'koa', 'ssr'];
-    if (addIndex <= skillsArray[arrayIndex].length) {
-      setTyping(skillsArray[arrayIndex].slice(0, addIndex++));
-      if (addIndex > skillsArray[arrayIndex].length) {
-        timer = setTimeout(skills, 1500);
-      } else {
-        timer = setTimeout(skills, 100);
-      }
-    } else {
-      clearTimeout(timer);
-      if (deleteIndex > -skillsArray[arrayIndex].length) {
-        setTyping(skillsArray[arrayIndex].slice(0, deleteIndex--));
-        timer = setTimeout(skills, 100);
-      } else {
-        clearTimeout(timer);
-        setTyping('');
-        addIndex = 0;
-        if (arrayIndex < skillsArray.length - 1) {
-          arrayIndex += 1;
-          deleteIndex = -1;
-          timer = setTimeout(skills, 100);
-        } else {
-          arrayIndex = 0;
-          timer = setTimeout(skills, 100);
-        }
-      }
-    }
-  };
-
   const flag = props.location.pathname === '/home';
   return (
     <div className="home">
-      <span className="home-typing-title">会的技能</span>
-      <span className="home-typing-content">{typing}</span>
-      <span className="home-typing-input">|</span>
-      {/* <div id="home-canvas" />
+      <div id="home-canvas" />
       <div className="home-center">
         <div className="home-sidebar">
           <div className="home-sidebar-item">
@@ -105,11 +104,18 @@ export default getInitialProps((props) => {
                <div className="home-author">
                  陆朝维
                </div>
+               <div className="home-typing-container">
+                 <div className="home-typing-name">会的技能</div>
+                 <div className="home-typing-content">
+                   <span className="home-typing-skill">{typing}</span>
+                   <span className="home-typing-input">|</span>
+                 </div>
+               </div>
              </div>
            )
          }
         </div>
-      </div> */}
+      </div>
     </div>
   );
 });
