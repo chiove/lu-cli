@@ -892,61 +892,118 @@ function _arrayWithHoles(arr) {
       setTyping = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    // window.particlesJS('home-canvas', options);
+    window.particlesJS('home-canvas', _options__WEBPACK_IMPORTED_MODULE_6__["default"]);
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var addIndex = 0;
+    var deleteIndex = -1;
+    var arrayIndex = 0;
+    var timer = null;
+
+    var skills = function skills() {
+      var skillsArray = ['html', 'js', 'css', 'react', 'vue', 'webpack', 'node', 'koa', 'ssr'];
+
+      if (addIndex <= skillsArray[arrayIndex].length) {
+        setTyping(skillsArray[arrayIndex].slice(0, addIndex++));
+
+        if (addIndex > skillsArray[arrayIndex].length) {
+          timer = setTimeout(skills, 1500);
+        } else {
+          timer = setTimeout(skills, 80);
+        }
+      } else {
+        clearTimeout(timer);
+
+        if (deleteIndex > -skillsArray[arrayIndex].length) {
+          setTyping(skillsArray[arrayIndex].slice(0, deleteIndex--));
+          timer = setTimeout(skills, 80);
+        } else {
+          clearTimeout(timer);
+          setTyping('');
+          addIndex = 0;
+
+          if (arrayIndex < skillsArray.length - 1) {
+            arrayIndex += 1;
+            deleteIndex = -1;
+            timer = setTimeout(skills, 80);
+          } else {
+            arrayIndex = 0;
+            timer = setTimeout(skills, 80);
+          }
+        }
+      }
+    };
+
     skills();
     return function () {
       clearTimeout(timer);
     };
   }, []);
-  var addIndex = 0;
-  var deleteIndex = -1;
-  var arrayIndex = 0;
-  var timer = null;
-
-  var skills = function skills() {
-    var skillsArray = ['html', 'js', 'css', 'react', 'vue', 'webpack', 'node', 'koa', 'ssr'];
-
-    if (addIndex <= skillsArray[arrayIndex].length) {
-      setTyping(skillsArray[arrayIndex].slice(0, addIndex++));
-
-      if (addIndex > skillsArray[arrayIndex].length) {
-        timer = setTimeout(skills, 1500);
-      } else {
-        timer = setTimeout(skills, 100);
-      }
-    } else {
-      clearTimeout(timer);
-
-      if (deleteIndex > -skillsArray[arrayIndex].length) {
-        setTyping(skillsArray[arrayIndex].slice(0, deleteIndex--));
-        timer = setTimeout(skills, 100);
-      } else {
-        clearTimeout(timer);
-        setTyping('');
-        addIndex = 0;
-
-        if (arrayIndex < skillsArray.length - 1) {
-          arrayIndex += 1;
-          deleteIndex = -1;
-          timer = setTimeout(skills, 100);
-        } else {
-          arrayIndex = 0;
-          timer = setTimeout(skills, 100);
-        }
-      }
-    }
-  };
-
   var flag = props.location.pathname === '/home';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "home-typing-title"
-  }, "\u4F1A\u7684\u6280\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "home-canvas"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-logo-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-logo"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home/a"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ant_design_icons__WEBPACK_IMPORTED_MODULE_2__["FileTextOutlined"], {
+    className: "home-sidebar-icon"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-name"
+  }, "\u7B80\u5386"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home/login1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ant_design_icons__WEBPACK_IMPORTED_MODULE_2__["EditOutlined"], {
+    className: "home-sidebar-icon"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-name"
+  }, "\u535A\u5BA2"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ant_design_icons__WEBPACK_IMPORTED_MODULE_2__["ContactsOutlined"], {
+    className: "home-sidebar-icon"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-sidebar-name"
+  }, "\u8054\u7CFB"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-content"
+  }, !flag ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, props.routes.map(function (item, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      key: key,
+      exact: true,
+      path: item.path,
+      component: item.component
+    });
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-header-img"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-author"
+  }, "\u9646\u671D\u7EF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-typing-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "home-typing-name"
+  }, "\u4F1A\u7684\u6280\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-typing-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "home-typing-skill"
   }, typing), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "home-typing-input"
-  }, "|"));
+  }, "|")))))));
 }));
 
 /***/ }),
