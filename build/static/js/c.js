@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{202:function(e,t,a){"use strict";a.r(t);var n=a(0),r=a.n(n),c=a(46),i=a(177);a(175);t.default=Object(i.a)((function(){return r.a.createElement("div",{className:"test2"},r.a.createElement(c.DatePicker,null),r.a.createElement(c.Button,{type:"primary",style:{marginLeft:8}},"Primary Button1"),"223")}))}}]);
+//# sourceMappingURL=c.js.map
