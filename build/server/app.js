@@ -445,7 +445,7 @@ var A = function A(props) {
       height: 100,
       width: 100
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "777"));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "8888"));
 };
 
 A.getInitialProps = /*#__PURE__*/function () {
