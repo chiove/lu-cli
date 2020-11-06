@@ -40,7 +40,7 @@ if (devMode) {
   );
 }
 
-const entry = ['babel-polyfill', path.resolve(__dirname, '../src/index.js')];
+const entry = [path.resolve(__dirname, '../src/index.js')];
 if (devMode) entry.splice(1, 0, 'webpack-hot-middleware/client.js?reload=true&noInfo=true');
 
 module.exports = merge(baseConfig, {

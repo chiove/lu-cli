@@ -9,11 +9,10 @@ const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = merge(baseConfig, {
   devtool: devMode ? 'cheap-module-source-map' : 'source-map',
-  watch: devMode,
   mode: process.env.NODE_ENV,
   entry: {
-    app: ['babel-polyfill', path.resolve(__dirname, '../src/index.js')],
-    layout: ['babel-polyfill', path.resolve(__dirname, '../src/layout/index.js')],
+    app: [path.resolve(__dirname, '../src/index.js')],
+    layout: [path.resolve(__dirname, '../src/layout/index.js')],
   },
   output: {
     filename: '[name].js',

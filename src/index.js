@@ -13,7 +13,6 @@ import 'moment/locale/zh-cn';
 import 'antd/dist/antd.less';
 import 'src/assets/css/reset.less';
 
-
 moment.locale('zh-cn');
 
 const serverRender = async (ctx) => {

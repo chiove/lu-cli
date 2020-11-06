@@ -115,20 +115,7 @@ module.exports = {
           options: {
             cacheDirectory: true,
             cacheCompression: false,
-            presets: [
-              [
-                require.resolve('@babel/preset-env'),
-                {
-                  modules: false,
-                },
-              ],
-              require.resolve('@babel/preset-react'),
-            ],
           },
-          plugins: [['import', {
-            libraryName: 'antd',
-            style: true,
-          }]],
         },
       ],
       threadPool: happyThreadPool,

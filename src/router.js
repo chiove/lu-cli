@@ -41,7 +41,6 @@ const routes = [
   },
   {
     path: '*',
-    ssr: true,
     component: loadble(() => import(/* webpackChunkName: 'not-found' */'./pages/not-found')),
   },
 ];
