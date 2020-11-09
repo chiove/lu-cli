@@ -24,7 +24,7 @@ const A = props => (<div className="test">
       width: 100,
     }}
   />
-  <div>88889</div>
+  <div>444</div>
 </div>);
 A.getInitialProps = async (ctx) => {
   if (__CLIENT__) {
