@@ -1,8 +1,14 @@
 const path = require('path');
+const fs = require('fs');
+const chalk = require('chalk');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HappyPack = require('happypack');
+
+if (!fs.existsSync(path.join(__dirname, '../build/dll/dll.js'))) {
+  throw Error(chalk.red('未发现 dll 文件，请运行 npm run build:dll 进行构建'));
+}
 const dllManifest = require('../build/dll/manifest');
 
 const happyThreadPool = HappyPack.ThreadPool({size: require('os').cpus().length - 1});
