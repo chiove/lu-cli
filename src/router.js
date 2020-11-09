@@ -40,6 +40,11 @@ const routes = [
     component: loadble(() => import(/* webpackChunkName: 'c' */'./pages/c')),
   },
   {
+    path: '/test',
+    ssr: true,
+    component: loadble(() => import(/* webpackChunkName: 'test' */'./pages/test')),
+  },
+  {
     path: '*',
     component: loadble(() => import(/* webpackChunkName: 'not-found' */'./pages/not-found')),
   },
