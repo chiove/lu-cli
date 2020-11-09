@@ -25,7 +25,6 @@ const plugins = [
         to: path.resolve(__dirname, '../build/static/js'),
       },
     ],
-
   }),
 ];
 
