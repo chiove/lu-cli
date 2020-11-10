@@ -14,7 +14,7 @@ const A = (props) => {
   // console.log(Test, <Test/>);
   const couterRef = useRef();
   useEffect(() => {
-    console.log(couterRef.current.getP);
+    console.log(couterRef.current, '3333');
   }, []);
   return (<div className="test">
     <div >{props.initialData && props.initialData.data.map(item => <Link key={item.name} to={'/b'}>{item.name}</Link>)}</div>

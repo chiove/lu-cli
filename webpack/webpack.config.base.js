@@ -6,10 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HappyPack = require('happypack');
 
-if (!fs.existsSync(path.join(__dirname, '../build/dll/dll.js'))) {
+if (!fs.existsSync(path.join(__dirname, '../.dll/dll.js'))) {
   throw Error(chalk.red('未发现 dll 文件，请运行 npm run build:dll 进行构建'));
 }
-const dllManifest = require('../build/dll/manifest');
+const dllManifest = require('../.dll/manifest');
 
 const happyThreadPool = HappyPack.ThreadPool({size: require('os').cpus().length - 1});
 const devMode = process.env.NODE_ENV === 'development';

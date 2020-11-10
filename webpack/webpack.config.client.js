@@ -24,6 +24,10 @@ const plugins = [
         from: path.resolve(__dirname, '../src/assets/js/particles.min.js'),
         to: path.resolve(__dirname, '../build/static/js'),
       },
+      {
+        from: path.resolve(__dirname, '../.dll'),
+        to: path.resolve(__dirname, '../build/.dll'),
+      },
     ],
   }),
 ];
