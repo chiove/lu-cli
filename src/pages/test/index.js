@@ -1,5 +1,5 @@
 import React from 'react';
-import getInitialProps from 'src/utils/get-initial-props';
+// import getInitialProps from 'src/utils/get-initial-props';
 import './style.less';
 
 class Test extends React.Component {
@@ -10,8 +10,8 @@ class Test extends React.Component {
   }
 
   render() {
-    return (<>3333</>);
+    return (<>1</>);
   }
 }
 
-export default getInitialProps(Test);
+export default Test;

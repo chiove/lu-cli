@@ -1,4 +1,5 @@
 
+import getInitialProps from 'src/utils/get-initial-props';
 import React from 'react';
 
 class AsyncComponent extends React.Component {
@@ -18,7 +19,7 @@ class AsyncComponent extends React.Component {
   async load(props) {
     const Module = await props.load();
     this.setState({
-      component: Module.default ? Module.default : Module,
+      component: getInitialProps(Module.default ? Module.default : Module),
     });
   }
 
