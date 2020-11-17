@@ -3,17 +3,16 @@ import lazy from './utils/lazy';
 const routes = [
   {
     path: '/home',
-    exact: true,
+    ssr: true,
     component: lazy(() => import(/* webpackChunkName: 'index' */'./pages/index')),
     routes: [
-      {
-        path: ['/home', '/home/a'],
-        exact: true,
-        component: lazy(() => import(/* webpackChunkName: 'a' */'./pages/a')),
-      },
+      // {
+      //   path: ['/home', '/home/a'],
+      //   exact: true,
+      //   component: lazy(() => import(/* webpackChunkName: 'a' */'./pages/a')),
+      // },
       {
         path: '/home/login1',
-        exact: true,
         component: lazy(() => import(/* webpackChunkName: 'login' */'./pages/login')),
       },
     ],
@@ -25,24 +24,10 @@ const routes = [
     component: lazy(() => import(/* webpackChunkName: 'login' */'./pages/login')),
   },
   {
-    path: '/a',
+    path: '/demo',
+    exact: true,
     ssr: true,
-    component: lazy(() => import(/* webpackChunkName: 'a' */'./pages/a')),
-  },
-  {
-    path: '/b',
-    ssr: true,
-    component: lazy(() => import(/* webpackChunkName: 'b' */'./pages/b')),
-  },
-  {
-    path: '/c',
-    ssr: true,
-    component: lazy(() => import(/* webpackChunkName: 'c' */'./pages/c')),
-  },
-  {
-    path: '/test',
-    ssr: true,
-    component: lazy(() => import(/* webpackChunkName: 'test' */'./pages/test')),
+    component: lazy(() => import(/* webpackChunkName: 'demo' */'./pages/demo')),
   },
   {
     path: '*',

@@ -8,11 +8,13 @@ const router = Router().loadMethods();
 
 // 合并所有路由
 const all = glob.sync(resolve(__dirname, './', '**/*.js'));
-const urls = all.filter(value => (value.indexOf('index.js') === -1));
+const urls = all.filter(value => (value.indexOf('/routes/index.js') === -1));
 urls.forEach((item) => {
+  console.log(item);
   const routes = require(item).routes || [];
   router.routes.push(...routes);
 });
+
 
 router.get('/*', controllers.index);
 

@@ -18,6 +18,7 @@ moment.locale('zh-cn');
 const serverRender = async (ctx) => {
   const routeList = await getStaticRoutes(routes);
   const {targetRoute} = matchRoute(ctx.url, routeList);
+  console.log(ctx.url);
   const initialData = targetRoute.component.getInitialProps ? await targetRoute.component.getInitialProps(ctx) : {};
   const context = {
     initialData,

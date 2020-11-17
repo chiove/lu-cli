@@ -1,12 +1,11 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
-import {Link, StaticRouter, Route, Switch} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Link, Route, Switch} from 'react-router-dom';
 import {
   FileTextOutlined,
   EditOutlined,
   ContactsOutlined,
+  Html5Outlined,
 } from '@ant-design/icons';
-import axios from 'axios';
-import {Button} from 'antd';
 import getInitialProps from 'src/utils/get-initial-props';
 import options from './options';
 import './style.less';
@@ -72,6 +71,12 @@ export default getInitialProps((props) => {
             <Link to="/home/a">
               <FileTextOutlined className="home-sidebar-icon"/>
               <div className="home-sidebar-name">简历</div>
+            </Link>
+          </div>
+          <div className="home-sidebar-item">
+            <Link to="/demo">
+              <Html5Outlined className="home-sidebar-icon"/>
+              <div className="home-sidebar-name">服务端渲染</div>
             </Link>
           </div>
           <div className="home-sidebar-item">
