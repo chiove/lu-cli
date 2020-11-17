@@ -26,7 +26,7 @@ const plugins = [
       },
       {
         from: path.resolve(__dirname, '../.dll'),
-        to: path.resolve(__dirname, '../build/.dll'),
+        to: path.resolve(__dirname, '../build/dll'),
       },
     ],
   }),
@@ -45,7 +45,6 @@ if (devMode) {
 
 const entry = [path.resolve(__dirname, '../src/index.js')];
 if (devMode) entry.splice(1, 0, 'webpack-hot-middleware/client.js?reload=true&noInfo=true');
-
 module.exports = merge(baseConfig, {
   mode: process.env.NODE_ENV,
   devtool: devMode ? 'cheap-module-source-map' : 'source-map',

@@ -16,9 +16,6 @@ const app = new Koa();
 let router = require('./routes');
 
 const start = async () => {
-  app.context.compiler = compiler;
-
-
   app.use(kwm(compiler, {logLevel: false}));
 
   app.use(koaStatic(path.resolve(__dirname, '../build')));

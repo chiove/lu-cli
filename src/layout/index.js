@@ -24,7 +24,7 @@ const Layout = (props) => {
           />
         }
         <script type="text/javascript" src="/static/js/particles.min.js"/>
-        <script type="text/javascript" src="/.dll/dll.js"/>
+        <script type="text/javascript" src="/dll/dll.js"/>
         <script type="text/javascript" src="/static/js/libs.js"/>
         <script type="text/javascript" src="/static/js/manifest.js"/>
         <script type="text/javascript" src="/static/js/main.js"/>
