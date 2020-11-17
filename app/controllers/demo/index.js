@@ -36,5 +36,18 @@ module.exports = {
       return body;
     }
   },
+  uploadImage: async (ctx, next) => {
+    const {path, name, type} = ctx.request.files.avatar;
+    ctx.body = {
+      code: 200,
+      data: {
+        path,
+        name,
+        type,
+      },
+      message: '上传成功！',
+    };
+    await next();
+  },
 };
 

@@ -8,5 +8,6 @@ router.options = {
   prefix: '/api',
 };
 router.get('/demo', controllers.demo.index.demo);
+router.post('/uploadImage', controllers.demo.index.uploadImage);
 
 module.exports = router;
