@@ -9,10 +9,11 @@ const Layout = (props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <meta name="theme-color" content="#000000" />
-        <meta name="keywords" content="koa-react-ssr"/>
+        <meta name="baidu-site-verification" content="code-oZ2VLUAXz8" />
+        <meta name="keywords" content="koa,react,ssr,koa-react-ssr,lu-cli,同构,脚手架,陆朝维"/>
         <meta name="description" content="服务端渲染"/>
         <link rel="icon" href="data:image/ico;base64,aWNv"/>
-        <title>蓝羚</title>
+        <title>陆朝维</title>
         <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
       </head>
       <body>

@@ -68,15 +68,9 @@ export default getInitialProps((props) => {
             </Link>
           </div>
           <div className="home-sidebar-item">
-            <Link to="/home/a">
-              <FileTextOutlined className="home-sidebar-icon"/>
-              <div className="home-sidebar-name">简历</div>
-            </Link>
-          </div>
-          <div className="home-sidebar-item">
             <Link to="/demo">
               <Html5Outlined className="home-sidebar-icon"/>
-              <div className="home-sidebar-name">服务端渲染</div>
+              <div className="home-sidebar-name">同构</div>
             </Link>
           </div>
           <div className="home-sidebar-item">
