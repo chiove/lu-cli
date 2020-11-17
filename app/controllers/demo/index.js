@@ -1,6 +1,5 @@
 module.exports = {
   demo: async (ctx, next) => {
-    console.log('5555');
     const body = {
       code: 200,
       data: [
