@@ -32,15 +32,6 @@ module.exports = merge(baseConfig, {
         options: {
           cacheDirectory: true,
           cacheCompression: false,
-          presets: [
-            [
-              require.resolve('@babel/preset-env'),
-              {
-                modules: false,
-              },
-            ],
-            require.resolve('@babel/preset-react'),
-          ],
           plugins: ['./webpack/no-require-css'],
         },
       },

@@ -28,11 +28,9 @@ module.exports = {
       message: 'sucess！',
     };
     if (next) {
-      // 服务端返回数据
       ctx.body = body;
       await next();
     } else {
-      // 客户端返回数据
       return body;
     }
   },
