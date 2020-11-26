@@ -6,6 +6,7 @@ const koaBody = require('koa-body');
 const chokidar = require('chokidar');
 const webpack = require('webpack');
 const kwm = require('kwm');
+const parameter = require('koa-parameter');
 const chalk = require('chalk');
 const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
@@ -34,6 +35,8 @@ const start = async () => {
       },
     },
   }));
+
+  app.use(parameter(app));
 
   app.use(router.middleware());
 

@@ -26,12 +26,15 @@
     "koa-better-router": "^2.1.1",
     "koa-body": "^4.2.0",
     "koa-logger": "^3.2.1",
+    "koa-parameter": "^3.0.1",
     "koa-static": "^5.0.0",
     "kwm": "^1.0.4",
     "moment": "^2.27.0",
+    "mysql2": "^2.2.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "require-all": "^3.0.0"
+    "require-all": "^3.0.0",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",

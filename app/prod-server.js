@@ -4,6 +4,7 @@ const koaBody = require('koa-body');
 const logger = require('koa-logger');
 const router = require('./routes');
 const koaStatic = require('koa-static');
+const parameter = require('koa-parameter');
 
 const app = new Koa();
 const start = async () => {
@@ -21,6 +22,7 @@ const start = async () => {
       },
     },
   }));
+  app.use(parameter(app));
   app.use(router.middleware());
 
   app.use(logger());
