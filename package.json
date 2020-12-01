@@ -31,6 +31,7 @@
     "koa-session-minimal": "^4.0.0",
     "koa-static": "^5.0.0",
     "kwm": "^1.0.4",
+    "md5": "^2.3.0",
     "moment": "^2.27.0",
     "mysql2": "^2.2.5",
     "react": "^16.13.1",

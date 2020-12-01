@@ -2,14 +2,25 @@ const Sequelize = require('sequelize');
 const sequelize = require('../database/sequelize');
 
 const Users = sequelize.define('users', {
+  userid: {
+    type: Sequelize.STRING(18),
+    allowNull: false,
+    unique: true,
+    primaryKey: true,
+  },
   username: {
     type: Sequelize.STRING(100),
     allowNull: false,
     unique: true,
   },
   password: {
-    type: Sequelize.STRING(18),
+    type: Sequelize.STRING(100),
     is: /^[0-9a-f]{18}$/i,
+    allowNull: false,
+    unique: true,
+  },
+  solt: {
+    type: Sequelize.STRING(18),
     allowNull: false,
     unique: true,
   },

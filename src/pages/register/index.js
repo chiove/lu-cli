@@ -1,30 +1,29 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import getInitialProps from 'src/utils/get-initial-props';
 import {Form, Input, Button, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
-import logoImg from './images/logo.png';
 import './style.less';
 
-const NormalLoginForm = () => {
+const NormalRegisterForm = (props) => {
   const onFinish = async (value) => {
-    const res = (await axios.post('/api/login', value)).data;
+    const res = (await axios.post('/api/register', value)).data;
     if (res.code === 0) {
       message.success(res.message);
+      props.history.push('/login');
     } else {
       message.error(res.message);
     }
   };
   return (
-    <div className="login">
-      <div className="login-content">
-        <div className="login-logo">
-          <img src={logoImg} alt="logo"/>
+    <div className="register">
+      <div className="register-content">
+        <div className="register-title">
+          注册
         </div>
         <Form
-          name="normal_login"
-          className="login-form"
+          name="normal_register"
+          className="register-form"
           onFinish={onFinish}
         >
           <Form.Item
@@ -65,23 +64,15 @@ const NormalLoginForm = () => {
               size={'large'}
               type="primary"
               htmlType="submit"
-              className="login-form-button"
+              className="register-form-button"
             >
-              登录
+              注册
             </Button>
           </Form.Item>
-          <div className="login-form-footer">
-            <Link className="login-form-register" to={'/register'}>
-              注册
-            </Link>
-            <a className="login-form-forgot" href="">
-              忘记密码?
-            </a>
-          </div>
         </Form>
       </div>
     </div>
   );
 };
 
-export default getInitialProps(NormalLoginForm);
+export default getInitialProps(NormalRegisterForm);

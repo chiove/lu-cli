@@ -1,4 +1,5 @@
 const {users} = require('../../models/index');
+const md5 = require('md5');
 
 module.exports = {
   login: async (ctx, next) => {
@@ -12,21 +13,20 @@ module.exports = {
         username,
       },
     });
+
     if (!user) {
       ctx.body = {code: -1, data: {}, message: '用户不存在！'};
-    } else if (user.password === password) {
-      if (ctx.session.username === username) {
-        ctx.body = {code: 0, data: ctx.session, message: '登录成功！'};
-      } else {
-        ctx.session = null;
+    } else {
+      const soltPassword = md5(`${password}${user.solt}`);
+      if (user.password === soltPassword) {
         ctx.session = {
-          user_id: Math.random().toString(36).substr(2),
+          userid: user.userid,
           username,
         };
         ctx.body = {code: 0, data: ctx.session, message: '登录成功！'};
+      } else {
+        ctx.body = {code: -1, data: {}, message: '密码错误！'};
       }
-    } else {
-      ctx.body = {code: -1, data: {}, message: '密码错误！'};
     }
     await next();
   },
@@ -43,16 +43,19 @@ module.exports = {
     });
     if (!user) {
       try {
+        const solt = new Date().getTime().toString(12).substr(2);
         await users.create({
+          userid: Math.random().toString(12).substr(2),
           username,
-          password,
+          password: md5(`${password}${solt}`),
+          solt,
         });
         ctx.body = {code: 0, data: {}, message: '注册成功！'};
       } catch (err) {
         ctx.body = {code: -1, data: {}, message: err};
       }
     } else {
-      ctx.body = {code: 0, data: {}, message: '用户已存在！'};
+      ctx.body = {code: -1, data: {}, message: '用户已存在！'};
     }
     await next();
   },
