@@ -12,11 +12,10 @@ const chalk = require('chalk');
 const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
 const sessionConfig = require('./config/session');
-const mysqlConfig = require('./database/config');
 const auth = require('./middleware/auth');
 
 const compiler = webpack(config);
-const store = new MysqlStore(mysqlConfig.sessionMysql);
+const store = new MysqlStore(sessionConfig.store);
 const app = new Koa();
 const router = require('./routes');
 

@@ -2,12 +2,26 @@ const Koa = require('koa');
 const path = require('path');
 const koaBody = require('koa-body');
 const logger = require('koa-logger');
-const router = require('./routes');
+const session = require('koa-session-minimal');
+const MysqlStore = require('koa-mysql-session');
 const koaStatic = require('koa-static');
 const parameter = require('koa-parameter');
+const sessionConfig = require('./config/session');
+const auth = require('./middleware/auth');
+const router = require('./routes');
 
+const store = new MysqlStore(sessionConfig.store);
 const app = new Koa();
 const start = async () => {
+  app.keys = sessionConfig.keys;
+  app.use(session({
+    key: sessionConfig.config.key,
+    cookie: {
+      ...sessionConfig.config,
+    },
+    store,
+  }
+  ));
   app.use(koaStatic(path.resolve(__dirname, '../build')));
   app.use(koaStatic(path.resolve(__dirname, '../public')));
   app.use(koaBody({
@@ -24,7 +38,7 @@ const start = async () => {
   }));
   app.use(parameter(app));
   app.use(router.middleware());
-
+  app.use(auth());
   app.use(logger());
   app.listen('3000', () => {
     console.log('http://127.0.0.1:3000');

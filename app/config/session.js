@@ -8,5 +8,11 @@ module.exports = {
     rolling: true,
     renew: false,
   },
-  filterAuth: ['/', '/home', '/login', '/api/login', '/api/register'],
+  store: {
+    database: 'jlbajpgf_base_db',
+    user: 'chiove',
+    password: 'chiove1992',
+    host: '172.247.132.226',
+  },
+  filterAuth: ['/', '/home', '/login', '/demo', '/api/demo', '/api/login', '/api/register'],
 };

@@ -10,6 +10,7 @@ const sequelize = new Sequelize(config.database.DATABASE, config.database.USERNA
     min: 0,
     idle: 10000,
   },
+  logging: false,
 });
 
 sequelize.authenticate().then(() => {

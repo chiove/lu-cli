@@ -6,6 +6,5 @@ const js_files = files.filter(file => file.endsWith('.js') && file.indexOf('inde
 module.exports = {};
 for (const file of js_files) {
   const name = file.substring(0, file.length - 3);
-  console.log(`${__dirname}/${file}`);
   module.exports[name] = require(`${__dirname}/${file}`);
 }
