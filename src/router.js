@@ -6,11 +6,6 @@ const routes = [
     ssr: true,
     component: lazy(() => import(/* webpackChunkName: 'index' */'./pages/index')),
     routes: [
-      // {
-      //   path: ['/home', '/home/a'],
-      //   exact: true,
-      //   component: lazy(() => import(/* webpackChunkName: 'a' */'./pages/a')),
-      // },
       {
         path: '/home/login1',
         component: lazy(() => import(/* webpackChunkName: 'login' */'./pages/login')),
@@ -21,12 +16,14 @@ const routes = [
     path: '/login',
     exact: true,
     ssr: true,
+    auth: false,
     component: lazy(() => import(/* webpackChunkName: 'login' */'./pages/login')),
   },
   {
     path: '/demo',
     exact: true,
     ssr: true,
+    auth: false,
     component: lazy(() => import(/* webpackChunkName: 'demo' */'./pages/demo')),
   },
   {

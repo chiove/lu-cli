@@ -7,6 +7,12 @@ const config = {
     PORT: '3306',
     HOST: '172.247.132.226',
   },
+  sessionMysql: {
+    database: 'jlbajpgf_base_db',
+    user: 'chiove',
+    password: 'chiove1992',
+    host: '172.247.132.226',
+  },
 };
 
 module.exports = config;

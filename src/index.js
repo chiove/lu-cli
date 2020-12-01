@@ -24,7 +24,7 @@ const serverRender = async (ctx) => {
   };
   return (<ConfigProvider locale={zhCN}>
     <StaticRouter location={ctx.url} context={context}>
-      <Layout initalData={initialData}>
+      <Layout initalData={initialData} session={ctx.session}>
         <Switch>
           {
             routeList.map((item, key) => (item.ssr ? <Route

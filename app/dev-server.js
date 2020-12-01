@@ -3,22 +3,34 @@ const path = require('path');
 const koaStatic = require('koa-static');
 const logger = require('koa-logger');
 const koaBody = require('koa-body');
-const chokidar = require('chokidar');
 const webpack = require('webpack');
 const kwm = require('kwm');
+const session = require('koa-session-minimal');
+const MysqlStore = require('koa-mysql-session');
 const parameter = require('koa-parameter');
 const chalk = require('chalk');
 const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
+const sessionConfig = require('./config/session');
+const mysqlConfig = require('./database/config');
+const auth = require('./middleware/auth');
 
 const compiler = webpack(config);
+const store = new MysqlStore(mysqlConfig.sessionMysql);
 const app = new Koa();
-
-let router = require('./routes');
+const router = require('./routes');
 
 const start = async () => {
+  app.keys = sessionConfig.keys;
+  app.use(session({
+    key: sessionConfig.config.key,
+    cookie: {
+      ...sessionConfig.config,
+    },
+    store,
+  }
+  ));
   app.use(kwm(compiler, {logLevel: false}));
-
   app.use(koaStatic(path.resolve(__dirname, '../build')));
 
   app.use(koaStatic(path.resolve(__dirname, '../public')));
@@ -37,9 +49,8 @@ const start = async () => {
   }));
 
   app.use(parameter(app));
-
   app.use(router.middleware());
-
+  app.use(auth());
   app.use(logger());
 
   app.listen('3000', () => {
@@ -54,35 +65,6 @@ const start = async () => {
       }, 100);
     });
   });
-
-  // 监听事件
-  const watcher = chokidar.watch(path.join(process.cwd(), 'app'));
-  watcher.on('ready', () => {
-    watcher.on('change', (watchPath) => { listen(watchPath); });
-    watcher.on('add', (watchPath) => { listen(watchPath); });
-    watcher.on('unlink', (watchPath) => { listen(watchPath); });
-  });
-
-  const listen = (listenPath) => {
-    cleanCache(listenPath);
-    try {
-      delete require.cache[require.resolve('./routes')];
-      router = require('./routes');
-      app.use(router.middleware());
-      console.info(chalk.green(`\r\n${listenPath}文件更新成功！\r\n`));
-    } catch (error) {
-      console.info('文件更新错误:', error);
-    }
-  };
-    // 清除缓存，实现热更新
-  const cleanCache = (modulePath) => {
-    const module = require.cache[modulePath];
-    if (module && module.parent) {
-      module.parent.children.splice(module.parent.children.indexOf(module), 1);
-      delete require.cache[modulePath];
-    }
-    delete require.cache[modulePath];
-  };
 };
 
 start();

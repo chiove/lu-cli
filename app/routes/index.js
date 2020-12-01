@@ -5,7 +5,6 @@ const controllers = require('require-all')(join(__dirname, '../controllers'));
 const glob = require('glob');
 
 const router = Router().loadMethods();
-
 // 合并所有路由
 const all = glob.sync(resolve(__dirname, './', '**/*.js'));
 const routers = all.filter(value => (value.indexOf('/routes/index.js') === -1));

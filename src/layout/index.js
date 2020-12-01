@@ -2,7 +2,8 @@ import React from 'react';
 import serialize from 'serialize-javascript';
 
 const Layout = (props) => {
-  const {initalData} = props;
+  const {initalData = {}, session = {}} = props;
+  const flag = Object.keys(initalData).length !== 0;
   return (
     <html lang="en">
       <head>
@@ -19,8 +20,14 @@ const Layout = (props) => {
       <body>
         <div id="app">{ props.children ? props.children : '' }</div>
         {
-          initalData && <script dangerouslySetInnerHTML={{
-            __html: `window.__USE_SERVER__=true; window.__INITIAL_DATA__= ${serialize(initalData)}`,
+          flag && <script dangerouslySetInnerHTML={{
+            __html: `window.__USE_SERVER__=true;window.__INITIAL_DATA__= ${serialize(initalData)}`,
+          }}
+          />
+        }
+        {
+          session && <script dangerouslySetInnerHTML={{
+            __html: `window.__USER__=${serialize(session)}`,
           }}
           />
         }

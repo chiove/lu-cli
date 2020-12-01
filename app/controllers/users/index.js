@@ -13,10 +13,18 @@ module.exports = {
       },
     });
     if (!user) {
-      ctx.body = {code: -1, data: {}, message: '用户不存在！',
-      };
+      ctx.body = {code: -1, data: {}, message: '用户不存在！'};
     } else if (user.password === password) {
-      ctx.body = {code: 0, data: {}, message: '登录成功！'};
+      if (ctx.session.username === username) {
+        ctx.body = {code: 0, data: ctx.session, message: '登录成功！'};
+      } else {
+        ctx.session = null;
+        ctx.session = {
+          user_id: Math.random().toString(36).substr(2),
+          username,
+        };
+        ctx.body = {code: 0, data: ctx.session, message: '登录成功！'};
+      }
     } else {
       ctx.body = {code: -1, data: {}, message: '密码错误！'};
     }
@@ -46,6 +54,11 @@ module.exports = {
     } else {
       ctx.body = {code: 0, data: {}, message: '用户已存在！'};
     }
+    await next();
+  },
+  loginout: async (ctx, next) => {
+    ctx.session = {};
+    ctx.redirect('/login');
     await next();
   },
 };

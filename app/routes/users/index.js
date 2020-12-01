@@ -9,5 +9,6 @@ router.options = {
 };
 router.post('/login', controllers.users.index.login);
 router.post('/register', controllers.users.index.register);
+router.get('/loginout', controllers.users.index.loginout);
 
 module.exports = router;
