@@ -47,6 +47,10 @@ const NormalRegisterForm = (props) => {
                   required: true,
                   message: '请输入金额!',
                 },
+                {
+                  pattern: /^-?\d+(,\d{3})*(\.\d{1,2})?$/,
+                  message: '请输入正确的金额!',
+                },
               ]}
             >
               <Input

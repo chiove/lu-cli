@@ -12,7 +12,7 @@ const NormalLoginForm = (props) => {
     const res = (await axios.post('/api/login', value)).data;
     if (res.code === 0) {
       message.success(res.message);
-      props.history.push('/login');
+      props.history.push('/bills');
     } else {
       message.error(res.message);
     }
