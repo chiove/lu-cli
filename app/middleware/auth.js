@@ -1,9 +1,9 @@
 const {filterAuth} = require('../config/session');
 
 const auth = () => async (ctx, next) => {
-  const {user_id} = ctx.session;
+  const {userid} = ctx.session;
   if (filterAuth.indexOf(ctx.url) === -1) {
-    if (!user_id) {
+    if (!userid) {
       ctx.body = {code: -1, data: {}, message: '没有权限！'};
       ctx.redirect('/login');
     } else {

@@ -1,4 +1,4 @@
-const {users} = require('../../models/index');
+const users = require('../../models/users');
 const md5 = require('md5');
 
 module.exports = {

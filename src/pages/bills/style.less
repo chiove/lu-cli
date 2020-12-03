@@ -1,0 +1,61 @@
+
+.bills{
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .bills-title{
+        padding-top: 10px;
+        text-align: center;
+        font-size: 16px;
+      }
+    .bills-form{
+        width: 360px;
+        padding: 20px;
+        margin: 0;
+    }
+    .bills-form-button{
+        width: 100%;
+    }
+    .bills-section{
+        padding: 0 20px;
+    }
+    .bills-section-title{
+        padding: 20px 0;
+        font-weight: bold;
+    }
+    .bills-platform{
+        display: flex;
+        justify-content: flex-start;
+        border: 1px solid #eee;
+    }
+    .bills-platform-item{
+        text-align: center;
+        width: 33.33%;
+    }
+    .bills-platform-text{
+        padding: 10px 0;
+    }
+    .bills-total{
+        text-align: center;
+        font-size: 16px;
+    }
+    .bills-total-money{
+        color: @error-color;
+        margin: 0 10px;
+    }
+    .bills-today{
+        color: @primary-color;
+    }
+    .bills-week{
+        color: @warning-color;
+    }
+    .bills-month{
+        color: @success-color;
+    }
+    .bills-all{
+        color: @error-color;
+    }
+}

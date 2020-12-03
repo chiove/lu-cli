@@ -7,11 +7,12 @@ import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import logoImg from './images/logo.png';
 import './style.less';
 
-const NormalLoginForm = () => {
+const NormalLoginForm = (props) => {
   const onFinish = async (value) => {
     const res = (await axios.post('/api/login', value)).data;
     if (res.code === 0) {
       message.success(res.message);
+      props.history.push('/login');
     } else {
       message.error(res.message);
     }
