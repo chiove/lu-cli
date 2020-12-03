@@ -23,7 +23,7 @@ const routes = [
     path: '/bills',
     exact: true,
     ssr: true,
-    component: lazy(() => import(/* webpackChunkName: 'login' */'./pages/bills')),
+    component: lazy(() => import(/* webpackChunkName: 'bills' */'./pages/bills')),
   },
   {
     path: '/register',
