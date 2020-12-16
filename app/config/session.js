@@ -1,3 +1,6 @@
+const {data} = require('autoprefixer');
+const {database} = require('../database/config');
+
 module.exports = {
   keys: ['chiove web'],
   config: {
@@ -9,10 +12,10 @@ module.exports = {
     renew: false,
   },
   store: {
-    database: 'jlbajpgf_base_db',
-    user: 'chiove',
-    password: 'chiove1992',
-    host: '172.247.132.226',
+    database: database.DATABASE,
+    user: database.USERNAME,
+    password: database.PASSWORD,
+    host: database.HOST,
   },
   filterAuth: ['/', '/home', '/login', '/demo', '/api/demo', '/api/login', '/api/register'],
 };

@@ -19,6 +19,11 @@ const store = new MysqlStore(sessionConfig.store);
 const app = new Koa();
 const router = require('./routes');
 
+// ssr webpack compile
+const childProcess = spawn('npm', ['run', 'server:dev'], {shell: process.platform === 'win32'});
+childProcess.on('close', (code) => {
+  console.log(`服务端webpack编译子进程已退出，退出码 ${code}，请从新启动服务！`);
+});
 const start = async () => {
   app.keys = sessionConfig.keys;
   app.use(session({
@@ -29,7 +34,9 @@ const start = async () => {
     store,
   }
   ));
+
   app.use(kwm(compiler, {logLevel: false}));
+
   app.use(koaStatic(path.resolve(__dirname, '../build')));
 
   app.use(koaStatic(path.resolve(__dirname, '../public')));
@@ -48,17 +55,16 @@ const start = async () => {
   }));
 
   app.use(parameter(app));
+
   app.use(router.middleware());
+
   app.use(auth());
+
   app.use(logger());
 
   app.listen('3000', () => {
     compiler.hooks.done.tap('compiler', () => {
       // 启动子进程,服务端编译，为了实现服务端渲染热更新
-      const childProcess = spawn('npm', ['run', 'server:dev'], {shell: process.platform === 'win32'});
-      childProcess.on('close', (code) => {
-        console.log(`服务端webpack编译子进程已退出，退出码 ${code}，请从新启动服务！`);
-      });
       setTimeout(() => {
         console.info(chalk.cyan('\r\n 🚀 http://127.0.0.1:3000\r\n'));
       }, 100);
