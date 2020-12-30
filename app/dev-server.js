@@ -6,16 +6,13 @@ const koaBody = require('koa-body');
 const webpack = require('webpack');
 const kwm = require('kwm');
 const session = require('koa-session-minimal');
-const MysqlStore = require('koa-mysql-session');
 const parameter = require('koa-parameter');
 const chalk = require('chalk');
 const {spawn} = require('child_process');
 const config = require('../webpack/webpack.config.client.js');
 const sessionConfig = require('./config/session');
-const auth = require('./middleware/auth');
 
 const compiler = webpack(config);
-const store = new MysqlStore(sessionConfig.store);
 const app = new Koa();
 const router = require('./routes');
 
@@ -26,14 +23,7 @@ childProcess.on('close', (code) => {
 });
 const start = async () => {
   app.keys = sessionConfig.keys;
-  app.use(session({
-    key: sessionConfig.config.key,
-    cookie: {
-      ...sessionConfig.config,
-    },
-    store,
-  }
-  ));
+  app.use(session(sessionConfig));
 
   app.use(kwm(compiler, {logLevel: false}));
 
@@ -57,8 +47,6 @@ const start = async () => {
   app.use(parameter(app));
 
   app.use(router.middleware());
-
-  app.use(auth());
 
   app.use(logger());
 
