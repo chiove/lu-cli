@@ -22,7 +22,7 @@ export default getInitialProps((props) => {
     let arrayIndex = 0;
     let timer = null;
     const skills = () => {
-      const skillsArray = ['html', 'js', 'css', 'react', 'vue', 'webpack', 'node', 'koa', 'ssr'];
+      const skillsArray = ['H5', 'ES6', 'React', 'Vue', 'Webpack', 'Node', 'Koa', '前端工程化', '客户端服务端同构', '公众号', '小程序'];
       if (addIndex <= skillsArray[arrayIndex].length) {
         setTyping(skillsArray[arrayIndex].slice(0, addIndex++));
         if (addIndex > skillsArray[arrayIndex].length) {
